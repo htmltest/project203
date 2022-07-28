@@ -6,6 +6,7 @@
 
         <link rel="stylesheet" href="css/styles.css" />
         <link rel="stylesheet" href="js/slick/slick.css" />
+        <link rel="stylesheet" href="js/mcustomscrollbar/jquery.mCustomScrollbar.css" />
 
         <meta http-equiv="x-ua-compatible" content="ie=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -49,10 +50,10 @@
 
                     <div class="event-ctrl">
                         <div class="event-ctrl-views">
-                            <a href="#" class="event-ctrl-views-1 active"><svg><use xlink:href="images/sprite.svg#events-view-1"></use></svg></a>
-                            <a href="#" class="event-ctrl-views-2"><svg><use xlink:href="images/sprite.svg#events-view-2"></use></svg></a>
-                            <a href="#" class="event-ctrl-views-3"><svg><use xlink:href="images/sprite.svg#events-view-3"></use></svg></a>
-                            <a href="#" class="event-ctrl-views-4"><svg><use xlink:href="images/sprite.svg#events-view-4"></use></svg></a>
+                            <a href="#" class="event-ctrl-views-1 active" data-viewclass="event-photos-view-1"><svg><use xlink:href="images/sprite.svg#events-view-1"></use></svg></a>
+                            <a href="#" class="event-ctrl-views-2" data-viewclass="event-photos-view-2"><svg><use xlink:href="images/sprite.svg#events-view-2"></use></svg></a>
+                            <a href="#" class="event-ctrl-views-3" data-viewclass="event-photos-view-3"><svg><use xlink:href="images/sprite.svg#events-view-3"></use></svg></a>
+                            <a href="#" class="event-ctrl-views-4" data-viewclass="event-photos-view-4"><svg><use xlink:href="images/sprite.svg#events-view-4"></use></svg></a>
                         </div>
                         <div class="event-ctrl-download"><a href="#"><svg><use xlink:href="images/sprite.svg#icon-download"></use></svg>Скачать все фотографии</a></div>
                     </div>
@@ -60,99 +61,259 @@
                     <!-- event photos -->
                     <div class="event-photos">
                         <div class="event-photos-item">
-                            <a href="#">
+                            <div class="event-photos-item-inner">
                                 <div class="event-photos-item-img" style="background-image:url(files/photo-1.jpg)"></div>
-                            </a>
+                                <a href="files/photo-1-max.jpg" class="event-photos-item-zoom" target="_blank"></a>
+                                <div class="event-photos-item-info">
+                                    <div class="event-photos-item-id">ID: 011158</div>
+                                    <div class="event-photos-item-descr">Панельная дискуссия «Дом для миллениала. Форматы недвижимости для современных горожан»</div>
+                                </div>
+                                <a href="files/photo-1-max.jpg" class="event-photos-item-download" download><svg><use xlink:href="images/sprite.svg#icon-download"></use></svg></a>
+                                <a href="#" class="event-photos-item-print"><svg><use xlink:href="images/sprite.svg#icon-print"></use></svg></a>
+                                <a href="#" class="event-photos-item-email"><svg><use xlink:href="images/sprite.svg#icon-email"></use></svg></a>
+                                <a href="#" class="event-photos-item-share"><svg><use xlink:href="images/sprite.svg#icon-share"></use></svg></a>
+                                <a href="#" class="event-photos-item-favorite"><svg><use xlink:href="images/sprite.svg#icon-favorite"></use></svg></a>
+                            </div>
                         </div>
 
                         <div class="event-photos-item">
-                            <a href="#">
+                            <div class="event-photos-item-inner">
                                 <div class="event-photos-item-img" style="background-image:url(files/photo-2.jpg)"></div>
-                            </a>
+                                <a href="files/photo-2-max.jpg" class="event-photos-item-zoom" target="_blank"></a>
+                                <div class="event-photos-item-info">
+                                    <div class="event-photos-item-id">ID: 011159</div>
+                                    <div class="event-photos-item-descr">Панельная дискуссия «Дом для миллениала. Форматы недвижимости для современных горожан»</div>
+                                </div>
+                                <a href="files/photo-2-max.jpg" class="event-photos-item-download" download><svg><use xlink:href="images/sprite.svg#icon-download"></use></svg></a>
+                                <a href="#" class="event-photos-item-print"><svg><use xlink:href="images/sprite.svg#icon-print"></use></svg></a>
+                                <a href="#" class="event-photos-item-email"><svg><use xlink:href="images/sprite.svg#icon-email"></use></svg></a>
+                                <a href="#" class="event-photos-item-share"><svg><use xlink:href="images/sprite.svg#icon-share"></use></svg></a>
+                                <a href="#" class="event-photos-item-favorite"><svg><use xlink:href="images/sprite.svg#icon-favorite"></use></svg></a>
+                            </div>
                         </div>
 
                         <div class="event-photos-item">
-                            <a href="#">
+                            <div class="event-photos-item-inner">
                                 <div class="event-photos-item-img" style="background-image:url(files/photo-3.jpg)"></div>
-                            </a>
+                                <a href="files/photo-3-max.jpg" class="event-photos-item-zoom" target="_blank"></a>
+                                <div class="event-photos-item-info">
+                                    <div class="event-photos-item-id">ID: 011160</div>
+                                    <div class="event-photos-item-descr">Панельная дискуссия «Дом для миллениала. Форматы недвижимости для современных горожан»</div>
+                                </div>
+                                <a href="files/photo-3-max.jpg" class="event-photos-item-download" download><svg><use xlink:href="images/sprite.svg#icon-download"></use></svg></a>
+                                <a href="#" class="event-photos-item-print"><svg><use xlink:href="images/sprite.svg#icon-print"></use></svg></a>
+                                <a href="#" class="event-photos-item-email"><svg><use xlink:href="images/sprite.svg#icon-email"></use></svg></a>
+                                <a href="#" class="event-photos-item-share"><svg><use xlink:href="images/sprite.svg#icon-share"></use></svg></a>
+                                <a href="#" class="event-photos-item-favorite"><svg><use xlink:href="images/sprite.svg#icon-favorite"></use></svg></a>
+                            </div>
                         </div>
 
                         <div class="event-photos-item">
-                            <a href="#">
+                            <div class="event-photos-item-inner">
                                 <div class="event-photos-item-img" style="background-image:url(files/photo-4.jpg)"></div>
-                            </a>
+                                <a href="files/photo-4-max.jpg" class="event-photos-item-zoom" target="_blank"></a>
+                                <div class="event-photos-item-info">
+                                    <div class="event-photos-item-id">ID: 011161</div>
+                                    <div class="event-photos-item-descr">Панельная дискуссия «Дом для миллениала. Форматы недвижимости для современных горожан»</div>
+                                </div>
+                                <a href="files/photo-4-max.jpg" class="event-photos-item-download" download><svg><use xlink:href="images/sprite.svg#icon-download"></use></svg></a>
+                                <a href="#" class="event-photos-item-print"><svg><use xlink:href="images/sprite.svg#icon-print"></use></svg></a>
+                                <a href="#" class="event-photos-item-email"><svg><use xlink:href="images/sprite.svg#icon-email"></use></svg></a>
+                                <a href="#" class="event-photos-item-share"><svg><use xlink:href="images/sprite.svg#icon-share"></use></svg></a>
+                                <a href="#" class="event-photos-item-favorite"><svg><use xlink:href="images/sprite.svg#icon-favorite"></use></svg></a>
+                            </div>
                         </div>
 
                         <div class="event-photos-item">
-                            <a href="#">
+                            <div class="event-photos-item-inner">
                                 <div class="event-photos-item-img" style="background-image:url(files/photo-5.jpg)"></div>
-                            </a>
+                                <a href="files/photo-5-max.jpg" class="event-photos-item-zoom" target="_blank"></a>
+                                <div class="event-photos-item-info">
+                                    <div class="event-photos-item-id">ID: 011162</div>
+                                    <div class="event-photos-item-descr">Панельная дискуссия «Дом для миллениала. Форматы недвижимости для современных горожан»</div>
+                                </div>
+                                <a href="files/photo-5-max.jpg" class="event-photos-item-download" download><svg><use xlink:href="images/sprite.svg#icon-download"></use></svg></a>
+                                <a href="#" class="event-photos-item-print"><svg><use xlink:href="images/sprite.svg#icon-print"></use></svg></a>
+                                <a href="#" class="event-photos-item-email"><svg><use xlink:href="images/sprite.svg#icon-email"></use></svg></a>
+                                <a href="#" class="event-photos-item-share"><svg><use xlink:href="images/sprite.svg#icon-share"></use></svg></a>
+                                <a href="#" class="event-photos-item-favorite"><svg><use xlink:href="images/sprite.svg#icon-favorite"></use></svg></a>
+                            </div>
                         </div>
 
                         <div class="event-photos-item">
-                            <a href="#">
+                            <div class="event-photos-item-inner">
                                 <div class="event-photos-item-img" style="background-image:url(files/photo-6.jpg)"></div>
-                            </a>
+                                <a href="files/photo-6-max.jpg" class="event-photos-item-zoom" target="_blank"></a>
+                                <div class="event-photos-item-info">
+                                    <div class="event-photos-item-id">ID: 011163</div>
+                                    <div class="event-photos-item-descr">Панельная дискуссия «Дом для миллениала. Форматы недвижимости для современных горожан»</div>
+                                </div>
+                                <a href="files/photo-6-max.jpg" class="event-photos-item-download" download><svg><use xlink:href="images/sprite.svg#icon-download"></use></svg></a>
+                                <a href="#" class="event-photos-item-print"><svg><use xlink:href="images/sprite.svg#icon-print"></use></svg></a>
+                                <a href="#" class="event-photos-item-email"><svg><use xlink:href="images/sprite.svg#icon-email"></use></svg></a>
+                                <a href="#" class="event-photos-item-share"><svg><use xlink:href="images/sprite.svg#icon-share"></use></svg></a>
+                                <a href="#" class="event-photos-item-favorite"><svg><use xlink:href="images/sprite.svg#icon-favorite"></use></svg></a>
+                            </div>
                         </div>
 
                         <div class="event-photos-item">
-                            <a href="#">
+                            <div class="event-photos-item-inner">
                                 <div class="event-photos-item-img" style="background-image:url(files/photo-7.jpg)"></div>
-                            </a>
+                                <a href="files/photo-7-max.jpg" class="event-photos-item-zoom" target="_blank"></a>
+                                <div class="event-photos-item-info">
+                                    <div class="event-photos-item-id">ID: 011164</div>
+                                    <div class="event-photos-item-descr">Панельная дискуссия «Дом для миллениала. Форматы недвижимости для современных горожан»</div>
+                                </div>
+                                <a href="files/photo-7-max.jpg" class="event-photos-item-download" download><svg><use xlink:href="images/sprite.svg#icon-download"></use></svg></a>
+                                <a href="#" class="event-photos-item-print"><svg><use xlink:href="images/sprite.svg#icon-print"></use></svg></a>
+                                <a href="#" class="event-photos-item-email"><svg><use xlink:href="images/sprite.svg#icon-email"></use></svg></a>
+                                <a href="#" class="event-photos-item-share"><svg><use xlink:href="images/sprite.svg#icon-share"></use></svg></a>
+                                <a href="#" class="event-photos-item-favorite"><svg><use xlink:href="images/sprite.svg#icon-favorite"></use></svg></a>
+                            </div>
                         </div>
 
                         <div class="event-photos-item">
-                            <a href="#">
+                            <div class="event-photos-item-inner">
                                 <div class="event-photos-item-img" style="background-image:url(files/photo-8.jpg)"></div>
-                            </a>
+                                <a href="files/photo-8-max.jpg" class="event-photos-item-zoom" target="_blank"></a>
+                                <div class="event-photos-item-info">
+                                    <div class="event-photos-item-id">ID: 011165</div>
+                                    <div class="event-photos-item-descr">Панельная дискуссия «Дом для миллениала. Форматы недвижимости для современных горожан»</div>
+                                </div>
+                                <a href="files/photo-8-max.jpg" class="event-photos-item-download" download><svg><use xlink:href="images/sprite.svg#icon-download"></use></svg></a>
+                                <a href="#" class="event-photos-item-print"><svg><use xlink:href="images/sprite.svg#icon-print"></use></svg></a>
+                                <a href="#" class="event-photos-item-email"><svg><use xlink:href="images/sprite.svg#icon-email"></use></svg></a>
+                                <a href="#" class="event-photos-item-share"><svg><use xlink:href="images/sprite.svg#icon-share"></use></svg></a>
+                                <a href="#" class="event-photos-item-favorite"><svg><use xlink:href="images/sprite.svg#icon-favorite"></use></svg></a>
+                            </div>
                         </div>
 
                         <div class="event-photos-item">
-                            <a href="#">
+                            <div class="event-photos-item-inner">
                                 <div class="event-photos-item-img" style="background-image:url(files/photo-3.jpg)"></div>
-                            </a>
+                                <a href="files/photo-3-max.jpg" class="event-photos-item-zoom" target="_blank"></a>
+                                <div class="event-photos-item-info">
+                                    <div class="event-photos-item-id">ID: 011160</div>
+                                    <div class="event-photos-item-descr">Панельная дискуссия «Дом для миллениала. Форматы недвижимости для современных горожан»</div>
+                                </div>
+                                <a href="files/photo-3-max.jpg" class="event-photos-item-download" download><svg><use xlink:href="images/sprite.svg#icon-download"></use></svg></a>
+                                <a href="#" class="event-photos-item-print"><svg><use xlink:href="images/sprite.svg#icon-print"></use></svg></a>
+                                <a href="#" class="event-photos-item-email"><svg><use xlink:href="images/sprite.svg#icon-email"></use></svg></a>
+                                <a href="#" class="event-photos-item-share"><svg><use xlink:href="images/sprite.svg#icon-share"></use></svg></a>
+                                <a href="#" class="event-photos-item-favorite"><svg><use xlink:href="images/sprite.svg#icon-favorite"></use></svg></a>
+                            </div>
                         </div>
 
                         <div class="event-photos-item">
-                            <a href="#">
+                            <div class="event-photos-item-inner">
                                 <div class="event-photos-item-img" style="background-image:url(files/photo-4.jpg)"></div>
-                            </a>
+                                <a href="files/photo-4-max.jpg" class="event-photos-item-zoom" target="_blank"></a>
+                                <div class="event-photos-item-info">
+                                    <div class="event-photos-item-id">ID: 011161</div>
+                                    <div class="event-photos-item-descr">Панельная дискуссия «Дом для миллениала. Форматы недвижимости для современных горожан»</div>
+                                </div>
+                                <a href="files/photo-4-max.jpg" class="event-photos-item-download" download><svg><use xlink:href="images/sprite.svg#icon-download"></use></svg></a>
+                                <a href="#" class="event-photos-item-print"><svg><use xlink:href="images/sprite.svg#icon-print"></use></svg></a>
+                                <a href="#" class="event-photos-item-email"><svg><use xlink:href="images/sprite.svg#icon-email"></use></svg></a>
+                                <a href="#" class="event-photos-item-share"><svg><use xlink:href="images/sprite.svg#icon-share"></use></svg></a>
+                                <a href="#" class="event-photos-item-favorite"><svg><use xlink:href="images/sprite.svg#icon-favorite"></use></svg></a>
+                            </div>
                         </div>
 
                         <div class="event-photos-item">
-                            <a href="#">
+                            <div class="event-photos-item-inner">
                                 <div class="event-photos-item-img" style="background-image:url(files/photo-1.jpg)"></div>
-                            </a>
+                                <a href="files/photo-1-max.jpg" class="event-photos-item-zoom" target="_blank"></a>
+                                <div class="event-photos-item-info">
+                                    <div class="event-photos-item-id">ID: 011158</div>
+                                    <div class="event-photos-item-descr">Панельная дискуссия «Дом для миллениала. Форматы недвижимости для современных горожан»</div>
+                                </div>
+                                <a href="files/photo-1-max.jpg" class="event-photos-item-download" download><svg><use xlink:href="images/sprite.svg#icon-download"></use></svg></a>
+                                <a href="#" class="event-photos-item-print"><svg><use xlink:href="images/sprite.svg#icon-print"></use></svg></a>
+                                <a href="#" class="event-photos-item-email"><svg><use xlink:href="images/sprite.svg#icon-email"></use></svg></a>
+                                <a href="#" class="event-photos-item-share"><svg><use xlink:href="images/sprite.svg#icon-share"></use></svg></a>
+                                <a href="#" class="event-photos-item-favorite"><svg><use xlink:href="images/sprite.svg#icon-favorite"></use></svg></a>
+                            </div>
                         </div>
 
                         <div class="event-photos-item">
-                            <a href="#">
+                            <div class="event-photos-item-inner">
                                 <div class="event-photos-item-img" style="background-image:url(files/photo-2.jpg)"></div>
-                            </a>
+                                <a href="files/photo-2-max.jpg" class="event-photos-item-zoom" target="_blank"></a>
+                                <div class="event-photos-item-info">
+                                    <div class="event-photos-item-id">ID: 011159</div>
+                                    <div class="event-photos-item-descr">Панельная дискуссия «Дом для миллениала. Форматы недвижимости для современных горожан»</div>
+                                </div>
+                                <a href="files/photo-2-max.jpg" class="event-photos-item-download" download><svg><use xlink:href="images/sprite.svg#icon-download"></use></svg></a>
+                                <a href="#" class="event-photos-item-print"><svg><use xlink:href="images/sprite.svg#icon-print"></use></svg></a>
+                                <a href="#" class="event-photos-item-email"><svg><use xlink:href="images/sprite.svg#icon-email"></use></svg></a>
+                                <a href="#" class="event-photos-item-share"><svg><use xlink:href="images/sprite.svg#icon-share"></use></svg></a>
+                                <a href="#" class="event-photos-item-favorite"><svg><use xlink:href="images/sprite.svg#icon-favorite"></use></svg></a>
+                            </div>
                         </div>
 
                         <div class="event-photos-item">
-                            <a href="#">
+                            <div class="event-photos-item-inner">
                                 <div class="event-photos-item-img" style="background-image:url(files/photo-7.jpg)"></div>
-                            </a>
+                                <a href="files/photo-7-max.jpg" class="event-photos-item-zoom" target="_blank"></a>
+                                <div class="event-photos-item-info">
+                                    <div class="event-photos-item-id">ID: 011164</div>
+                                    <div class="event-photos-item-descr">Панельная дискуссия «Дом для миллениала. Форматы недвижимости для современных горожан»</div>
+                                </div>
+                                <a href="files/photo-7-max.jpg" class="event-photos-item-download" download><svg><use xlink:href="images/sprite.svg#icon-download"></use></svg></a>
+                                <a href="#" class="event-photos-item-print"><svg><use xlink:href="images/sprite.svg#icon-print"></use></svg></a>
+                                <a href="#" class="event-photos-item-email"><svg><use xlink:href="images/sprite.svg#icon-email"></use></svg></a>
+                                <a href="#" class="event-photos-item-share"><svg><use xlink:href="images/sprite.svg#icon-share"></use></svg></a>
+                                <a href="#" class="event-photos-item-favorite"><svg><use xlink:href="images/sprite.svg#icon-favorite"></use></svg></a>
+                            </div>
                         </div>
 
                         <div class="event-photos-item">
-                            <a href="#">
+                            <div class="event-photos-item-inner">
                                 <div class="event-photos-item-img" style="background-image:url(files/photo-8.jpg)"></div>
-                            </a>
+                                <a href="files/photo-8-max.jpg" class="event-photos-item-zoom" target="_blank"></a>
+                                <div class="event-photos-item-info">
+                                    <div class="event-photos-item-id">ID: 011165</div>
+                                    <div class="event-photos-item-descr">Панельная дискуссия «Дом для миллениала. Форматы недвижимости для современных горожан»</div>
+                                </div>
+                                <a href="files/photo-8-max.jpg" class="event-photos-item-download" download><svg><use xlink:href="images/sprite.svg#icon-download"></use></svg></a>
+                                <a href="#" class="event-photos-item-print"><svg><use xlink:href="images/sprite.svg#icon-print"></use></svg></a>
+                                <a href="#" class="event-photos-item-email"><svg><use xlink:href="images/sprite.svg#icon-email"></use></svg></a>
+                                <a href="#" class="event-photos-item-share"><svg><use xlink:href="images/sprite.svg#icon-share"></use></svg></a>
+                                <a href="#" class="event-photos-item-favorite"><svg><use xlink:href="images/sprite.svg#icon-favorite"></use></svg></a>
+                            </div>
                         </div>
 
                         <div class="event-photos-item">
-                            <a href="#">
+                            <div class="event-photos-item-inner">
                                 <div class="event-photos-item-img" style="background-image:url(files/photo-5.jpg)"></div>
-                            </a>
+                                <a href="files/photo-5-max.jpg" class="event-photos-item-zoom" target="_blank"></a>
+                                <div class="event-photos-item-info">
+                                    <div class="event-photos-item-id">ID: 011162</div>
+                                    <div class="event-photos-item-descr">Панельная дискуссия «Дом для миллениала. Форматы недвижимости для современных горожан»</div>
+                                </div>
+                                <a href="files/photo-5-max.jpg" class="event-photos-item-download" download><svg><use xlink:href="images/sprite.svg#icon-download"></use></svg></a>
+                                <a href="#" class="event-photos-item-print"><svg><use xlink:href="images/sprite.svg#icon-print"></use></svg></a>
+                                <a href="#" class="event-photos-item-email"><svg><use xlink:href="images/sprite.svg#icon-email"></use></svg></a>
+                                <a href="#" class="event-photos-item-share"><svg><use xlink:href="images/sprite.svg#icon-share"></use></svg></a>
+                                <a href="#" class="event-photos-item-favorite"><svg><use xlink:href="images/sprite.svg#icon-favorite"></use></svg></a>
+                            </div>
                         </div>
 
                         <div class="event-photos-item">
-                            <a href="#">
+                            <div class="event-photos-item-inner">
                                 <div class="event-photos-item-img" style="background-image:url(files/photo-6.jpg)"></div>
-                            </a>
+                                <a href="files/photo-6-max.jpg" class="event-photos-item-zoom" target="_blank"></a>
+                                <div class="event-photos-item-info">
+                                    <div class="event-photos-item-id">ID: 011163</div>
+                                    <div class="event-photos-item-descr">Панельная дискуссия «Дом для миллениала. Форматы недвижимости для современных горожан»</div>
+                                </div>
+                                <a href="files/photo-6-max.jpg" class="event-photos-item-download" download><svg><use xlink:href="images/sprite.svg#icon-download"></use></svg></a>
+                                <a href="#" class="event-photos-item-print"><svg><use xlink:href="images/sprite.svg#icon-print"></use></svg></a>
+                                <a href="#" class="event-photos-item-email"><svg><use xlink:href="images/sprite.svg#icon-email"></use></svg></a>
+                                <a href="#" class="event-photos-item-share"><svg><use xlink:href="images/sprite.svg#icon-share"></use></svg></a>
+                                <a href="#" class="event-photos-item-favorite"><svg><use xlink:href="images/sprite.svg#icon-favorite"></use></svg></a>
+                            </div>
                         </div>
                     </div>
                     <!-- event photos END -->
@@ -220,6 +381,7 @@
 
         <script src="js/jquery-3.4.1.min.js"></script>
         <script src="js/slick/slick.min.js"></script>
+        <script src="js/mcustomscrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
         <script src="js/masonry.pkgd.min.js"></script>
         <script src="js/tools.js"></script>
 

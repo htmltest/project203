@@ -319,11 +319,65 @@ header::after {content:""; display:block; clear:both}
 .event-ctrl-download a:hover svg {fill:#FFFFFF}
 
 .event-photos {margin:40px -10px -20px -10px; font-size:0; line-height:0; letter-spacing:-1px}
-.event-photos-item {display:inline-block; vertical-align:top; width:25%; padding:0 10px 20px 10px}
-.event-photos-item a {display:block; text-decoration:none; color:#000000}
+.event-photos-item {display:inline-block; vertical-align:top; width:25%}
+.event-photos-item-inner {position:relative; margin:0 10px 20px 10px}
 .event-photos-item-img {height:183px; position:relative; background:no-repeat center; background-size:cover}
 .event-photos-item-img::before {content:""; display:block; position:absolute; left:0; top:0; right:0; bottom:0; background:#000000; opacity:0; transition:opacity 0.2s}
-.event-photos-item a:hover .event-photos-item-img::before {opacity:1}
+.event-photos-item-inner:hover .event-photos-item-img::before {opacity:1}
+.event-photos-item-zoom {display:block; position:absolute; left:0; top:0; right:0; bottom:0}
+.event-photos-item-info {position:absolute; left:20px; top:20px; opacity:0; transition:opacity 0.2s; pointer-events:none}
+.event-photos-item-inner:hover .event-photos-item-info {opacity:1}
+.event-photos-item-id {font-size:16px; line-height:22px; letter-spacing:0; color:#9C9C9C}
+.event-photos-item-descr {display:none}
+.event-photos-item-download {position:absolute; right:13px; top:11px; width:40px; height:40px; background:#373737; transition:background 0.2s, opacity 0.2s; opacity:0}
+.event-photos-item-inner:hover .event-photos-item-download {opacity:1}
+.event-photos-item-download:hover {background:transparent}
+.event-photos-item-download svg {display:block; width:24px; height:24px; position:absolute; left:50%; top:50%; margin:-12px 0 0 -12px; fill:#FFFFFF}
+.event-photos-item-print {position:absolute; left:20px; bottom:25px; transition:opacity 0.2s; opacity:0}
+.event-photos-item-inner:hover .event-photos-item-print {opacity:1}
+.event-photos-item-print svg {display:block; width:20px; height:20px; fill:#FFFFFF; transition:fill 0.2s}
+.event-photos-item-print:hover svg {fill:#D6D6D6}
+.event-photos-item-email {position:absolute; left:90px; bottom:25px; transition:opacity 0.2s; opacity:0}
+.event-photos-item-inner:hover .event-photos-item-email {opacity:1}
+.event-photos-item-email svg {display:block; width:20px; height:20px; fill:#FFFFFF; transition:fill 0.2s}
+.event-photos-item-email:hover svg {fill:#D6D6D6}
+.event-photos-item-share {position:absolute; left:160px; bottom:25px; transition:opacity 0.2s; opacity:0}
+.event-photos-item-inner:hover .event-photos-item-share {opacity:1}
+.event-photos-item-share svg {display:block; width:20px; height:20px; fill:#FFFFFF; transition:fill 0.2s}
+.event-photos-item-share:hover svg {fill:#D6D6D6}
+.event-photos-item-favorite {position:absolute; left:230px; bottom:25px; transition:opacity 0.2s; opacity:0}
+.event-photos-item-inner:hover .event-photos-item-favorite {opacity:1}
+.event-photos-item-favorite svg {display:block; width:20px; height:20px; fill:#FFFFFF; transition:fill 0.2s}
+.event-photos-item-favorite:hover svg {fill:#D6D6D6}
+
+.event-photos.event-photos-view-2 .event-photos-item {width:50%}
+.event-photos.event-photos-view-2 .event-photos-item-inner {background:#fafafa; overflow:hidden; position:relative}
+.event-photos.event-photos-view-2 .event-photos-item-img {float:left; width:275px; height:200px}
+.event-photos.event-photos-view-2 .event-photos-item-info {float:left; width:calc(100% - 275px); padding:20px; position:relative; left:auto; top:auto; opacity:1}
+.event-photos.event-photos-view-2 .event-photos-item-descr {display:block; margin:13px 0 0 0; font-size:16px; line-height:22px; letter-spacing:0; color:#000000; max-height:132px; overflow:hidden; position:relative}
+.event-photos.event-photos-view-2 .event-photos-item-download {right:auto; left:13px}
+
+.event-photos.event-photos-view-3 .event-photos-item:nth-child(4n - 3) {width:25%}
+.event-photos.event-photos-view-3 .event-photos-item:nth-child(4n - 2) {width:75%}
+.event-photos.event-photos-view-3 .event-photos-item:nth-child(4n - 1) {width:50%}
+.event-photos.event-photos-view-3 .event-photos-item:nth-child(4n) {width:50%}
+.event-photos.event-photos-view-3 .event-photos-item-img {height:387px}
+
+.event-photos.event-photos-view-4 .event-photos-item:nth-child(7n - 6) {width:25%}
+.event-photos.event-photos-view-4 .event-photos-item:nth-child(7n - 6) .event-photos-item-img {height:387px}
+.event-photos.event-photos-view-4 .event-photos-item:nth-child(7n - 5) {width:50%}
+.event-photos.event-photos-view-4 .event-photos-item:nth-child(7n - 5) .event-photos-item-img {height:445px}
+.event-photos.event-photos-view-4 .event-photos-item:nth-child(7n - 4) {width:25%}
+.event-photos.event-photos-view-4 .event-photos-item:nth-child(7n - 4) .event-photos-item-img {height:183px}
+.event-photos.event-photos-view-4 .event-photos-item:nth-child(7n - 3) {width:25%}
+.event-photos.event-photos-view-4 .event-photos-item:nth-child(7n - 3) .event-photos-item-img {height:387px}
+.event-photos.event-photos-view-4 .event-photos-item:nth-child(7n - 1) {width:50%}
+.event-photos.event-photos-view-4 .event-photos-item:nth-child(7n - 1) .event-photos-item-img {height:328px}
+.event-photos.event-photos-view-4 .event-photos-item:nth-child(7n - 2) {width:25%}
+.event-photos.event-photos-view-4 .event-photos-item:nth-child(7n - 2) .event-photos-item-img {height:387px}
+.event-photos.event-photos-view-4 .event-photos-item:nth-child(7n) {width:25%}
+.event-photos.event-photos-view-4 .event-photos-item:nth-child(7n) .event-photos-item-img {height:183px}
+.event-photos.event-photos-view-4 .event-photos-item-img {height:387px}
 
 footer {margin:-60px 0 0 0; height:60px; border-top:1px solid #E7E7E7; background:#FFFFFF; position:relative; padding:19px 20px 0 20px}
 
@@ -348,3 +402,56 @@ footer {margin:-60px 0 0 0; height:60px; border-top:1px solid #E7E7E7; backgroun
     .copyrights {font-size:16px; line-height:24px}
     .policy {font-size:16px; line-height:24px}
 }
+
+.window-photo-open,
+.window-photo-open body {overflow:hidden; position:fixed; left:0; top:0; right:0; bottom:0}
+
+.window-photo {position:fixed; left:0; top:0; right:0; bottom:0; z-index:9999; background:#000000}
+.window-photo-preview {position:fixed; left:0; top:0; bottom:0; z-index:99; width:166px}
+.window-photo-preview-inner {position:absolute; left:0; top:0; right:0; bottom:0; overflow:auto}
+.window-photo-preview-list {margin:0 0 0 20px; width:120px}
+.window-photo-preview-list-item {padding:4px 0}
+.window-photo-preview-list-item a {display:block; position:relative; height:90px; background:no-repeat center; background-size:cover}
+.window-photo-preview-list-item a::after {content:""; display:block; position:absolute; left:0; top:0; right:0; bottom:0; border:4px solid #FF2F66; opacity:0; transition:all 0.2s}
+.window-photo-preview-list-item a:hover::after,
+.window-photo-preview-list-item.active a::after {opacity:1}
+.window-photo-preview .mCSB_inside > .mCSB_container {margin:0}
+.window-photo-preview .mCSB_scrollTools {opacity:1; width:6px}
+.window-photo-preview .mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {background:#98D5C4; border-radius:3px}
+.window-photo-preview .mCSB_scrollTools .mCSB_draggerRail {background:#535353; width:6px; border-radius:3px}
+
+.window-photo-close {display:block; position:absolute; right:20px; top:20px}
+.window-photo-close svg {display:block; fill:none; stroke:#FFFFFF; transition:all 0.2s; width:15px; height:15px}
+.window-photo-close:hover svg {stroke:#FF2F66}
+
+.window-photo-download {display:block; position:absolute; right:58px; top:20px}
+.window-photo-download svg {display:block; fill:none; stroke:#FFFFFF; transition:all 0.2s; width:17px; height:16px}
+.window-photo-download:hover svg {stroke:#FF2F66}
+
+.window-photo-social {display:block; position:absolute; right:98px; top:20px}
+.window-photo-social-icon svg {display:block; fill:none; stroke:#FFFFFF; transition:all 0.2s; width:17px; height:16px}
+.window-photo-social-window {display:none; position:absolute; z-index:99; left:50%; top:100%; margin:16px 0 0 0; transform:translateX(-50%); font-size:0; line-height:0; letter-spacing:-1px; white-space:nowrap; padding:13px 25px 0 25px; height:47px; background:#424242; box-shadow:6px 6px 20px rgba(36, 36, 36, 0.13)}
+.window-photo-social-window::before {content:""; display:block; position:absolute; left:50%; top:-7px; width:14px; height:14px; background:#424242; margin-left:-7px; transform:rotate(45deg)}
+.window-photo-social-window::after {content:""; display:block; position:absolute; left:0; top:-16px; right:0; height:16px; background:url(../images/blank.gif)}
+.window-photo-social:hover .window-photo-social-window {display:block}
+.window-photo-social-item {display:inline-block; vertical-align:top; width:24px; margin:0 0 0 30px; position:relative}
+.window-photo-social-item:first-child {margin:0}
+.window-photo-social-item svg {display:block; width:24px; height:24px; transition:all 0.2s; fill:#FFFFFF; transition:fill 0.2s}
+.window-photo-social-item:hover svg {fill:#FF2F66}
+
+.window-photo-slider {position:absolute; left:258px; top:53px; right:91px; bottom:30px; font-size:0; line-height:0; letter-spacing:-1px; white-space:nowrap}
+.window-photo-slider-list {position:relative; overflow:hidden}
+.window-photo-slider-list.slick-initialized {overflow:visible}
+.window-photo-slider-list-item {display:inline-block; vertical-align:top; width:100%}
+.window-photo-slider-list-item-inner {display:block; width:100%; height:calc(100vh - 83px); line-height:calc(100vh - 83px); text-align:center}
+.window-photo-slider .slick-slide img,
+.window-photo-slider-list-item-inner img {display:inline-block; vertical-align:middle; max-height:100%}
+
+.window-photo-slider .slick-prev,
+.window-photo-slider .slick-next {display:block; position:absolute; z-index:2; top:50%; width:40px; height:40px; border:none; border-radius:0; margin:-20px 0 0 0; padding:0; outline:none; -webkit-appearance:none; cursor:pointer; background:#363636; transition:background 0.2s}
+.window-photo-slider .slick-prev:hover,
+.window-photo-slider .slick-next:hover {background:#FF2F66}
+.window-photo-slider .slick-prev {left:-60px}
+.window-photo-slider .slick-next {right:-60px}
+.window-photo-slider .slick-prev svg {display:block; position:absolute; left:50%; top:50%; width:10px; height:16px; margin:-8px 0 0 -6px; fill:none; stroke:#FFFFFF}
+.window-photo-slider .slick-next svg {display:block; position:absolute; left:50%; top:50%; width:10px; height:16px; margin:-8px 0 0 -4px; fill:none; stroke:#FFFFFF}
