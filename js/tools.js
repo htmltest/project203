@@ -150,7 +150,13 @@ $(document).ready(function() {
         for (var i = 0; i < galleryLength; i++) {
             var curGalleryItem = curGallery.find('.event-photos-item').eq(i);
             windowHTML +=               '<div class="window-photo-slider-list-item">' +
+                                            '<div class="window-photo-slider-list-item-header">' +
+                                                '<a href="' + curGalleryItem.find('.event-photos-item-favorite').attr('href') + '" class="window-photo-item-favorite"><svg><use xlink:href="' + pathTemplate + 'images/sprite.svg#icon-favorite"></use></svg></a>' +
+                                                '<a href="' + curGalleryItem.find('.event-photos-item-email').attr('href') + '" class="window-photo-item-email"><svg><use xlink:href="' + pathTemplate + 'images/sprite.svg#icon-email"></use></svg></a>' +
+                                                '<a href="' + curGalleryItem.find('.event-photos-item-print').attr('href') + '" class="window-photo-item-print"><svg><use xlink:href="' + pathTemplate + 'images/sprite.svg#icon-print"></use></svg></a>' +
+                                            '</div>' +
                                             '<div class="window-photo-slider-list-item-inner"><img src="' + pathTemplate + 'images/loading.gif" data-src="' + curGalleryItem.find('.event-photos-item-zoom').attr('href') + '" alt="" /></div>' +
+                                            '<div class="window-photo-slider-list-item-data"><div class="window-photo-slider-list-item-data-id">' + curGalleryItem.find('.event-photos-item-id').html() + '</div>' + curGalleryItem.find('.event-photos-item-data').html() + '</div>' +
                                         '</div>';
         }
         windowHTML +=               '</div>' +
@@ -161,13 +167,14 @@ $(document).ready(function() {
         $('.window-photo').remove();
         $('body').append(windowHTML);
 
-        $('.window-photo').each(function() {
-            var marginPhoto = 166;
-            if ($(window).width() < 1200) {
-                marginPhoto = 253;
+        var curMaxHeight = 0;
+        $('.window-photo-slider-list-item').each(function() {
+            var curWindowItem = $(this);
+            var curHeight = $('.window-photo').height() - curWindowItem.find('.window-photo-slider-list-item-data').outerHeight() - curWindowItem.find('.window-photo-slider-list-item-header').outerHeight();
+            if (curMaxHeight < curHeight) {
+                curMaxHeight = curHeight;
             }
-            var newHeight = marginPhoto;
-            $('.window-photo-slider-list-item-inner').css({'height': 'calc(100vh - ' + newHeight + 'px)', 'line-height': 'calc(100vh - ' + newHeight + 'px)'});
+            curWindowItem.find('.window-photo-slider-list-item-inner').css({'height': curHeight + 'px', 'line-height': curHeight + 'px'});
         });
 
         if ($(window).width() > 1199) {
@@ -227,6 +234,7 @@ $(document).ready(function() {
                 }, 3000);
             }
         });
+        $('.window-photo-slider-list .slick-prev, .window-photo-slider-list .slick-next').css({'top': curMaxHeight / 2 + $('.window-photo-slider-list-item-header').eq(0).height()});
 
         e.preventDefault();
     });
@@ -252,4 +260,183 @@ $(document).ready(function() {
         }
     });
 
+    $('.filter-slider').each(function() {
+        var curSlider = $(this);
+        var curRange = curSlider.find('.filter-slider-range-inner')[0];
+        var curStartFrom = Number(curSlider.find('.filter-slider-min').html());
+        if (Number(curSlider.find('.filter-slider-from').val()) !== 0) {
+            curStartFrom = Number(curSlider.find('.filter-slider-from').val());
+        }
+        var curStartTo = Number(curSlider.find('.filter-slider-max').html());
+        if (Number(curSlider.find('.filter-slider-to').val()) !== 0) {
+            curStartTo = Number(curSlider.find('.filter-slider-to').val());
+        }
+        noUiSlider.create(curRange, {
+            start: [curStartFrom, curStartTo],
+            connect: true,
+            range: {
+                'min': Number(curSlider.find('.filter-slider-min').html()),
+                'max': Number(curSlider.find('.filter-slider-max').html())
+            },
+            step: Number(curSlider.find('.filter-slider-step').html()),
+            keyboardSupport: false,
+            format: wNumb({
+                decimals: 0
+            })
+        });
+        curRange.noUiSlider.on('update', function(values, handle) {
+            if (handle == 0) {
+                curSlider.find('.filter-slider-from').val(values[handle]);
+            } else {
+                curSlider.find('.filter-slider-to').val(values[handle]);
+            }
+        });
+        curRange.noUiSlider.on('change', function(values, handle) {
+            $('.filter-dates-mobile-item').removeClass('active from to');
+            var fromIndex = Number($('.filter-slider-from').val()) - 1;
+            var toIndex = Number($('.filter-slider-to').val());
+            for (var i = fromIndex; i < toIndex; i++) {
+                $('.filter-dates-mobile-item').eq(i).addClass('active');
+            }
+            $('.filter-dates-mobile-item').eq(fromIndex).addClass('from');
+            $('.filter-dates-mobile-item').eq(toIndex - 1).addClass('to');
+            updateDatesCurrent();
+            updateEvents();
+        });
+
+        var fromIndex = Number($('.filter-slider-from').val()) - 1;
+        var toIndex = Number($('.filter-slider-to').val());
+        for (var i = fromIndex; i < toIndex; i++) {
+            $('.filter-dates-mobile-item').eq(i).addClass('active');
+        }
+        $('.filter-dates-mobile-item').eq(fromIndex).addClass('from');
+        $('.filter-dates-mobile-item').eq(toIndex - 1).addClass('to');
+        updateDatesCurrent();
+    });
+
+    $('.filter-tags-list input').change(function() {
+        var curHTML = '';
+        $('.filter-tags-list input:checked').each(function() {
+            if (curHTML != '') {
+                curHTML += ', ';
+            }
+            curHTML += $(this).parent().find('span').html();
+        });
+        if (curHTML != '') {
+            $('.filter-tags-current span').html(curHTML);
+        } else {
+            $('.filter-tags-current span').html($('.filter-tags-current span').attr('data-placeholder'));
+        }
+        updateEvents();
+    });
+
+    $('.filter-tags').each(function() {
+        var curHTML = '';
+        $('.filter-tags-list input:checked').each(function() {
+            if (curHTML != '') {
+                curHTML += ', ';
+            }
+            curHTML += $(this).parent().find('span').html();
+        });
+        if (curHTML != '') {
+            $('.filter-tags-current span').html(curHTML);
+        } else {
+            $('.filter-tags-current span').html($('.filter-tags-current span').attr('data-placeholder'));
+        }
+    });
+
+    $('.events-wrap .page-size-select-item label input').change(function() {
+        updateEvents();
+    });
+
+    $('body').on('click', '.events-wrap .paging .pager a', function(e) {
+        var curLink = $(this);
+        if (!curLink.hasClass('active')) {
+            $('.paging .pager a.active').removeClass('active');
+            curLink.addClass('active');
+            updateEvents();
+        }
+        e.preventDefault();
+    });
+
+    $('.filter-tags-current').click(function() {
+        $(this).parent().toggleClass('mobile-open');
+    });
+
+    $(document).click(function(e) {
+        if ($(e.target).parents().filter('.filter-tags').length == 0) {
+            $('.filter-tags').removeClass('mobile-open');
+        }
+    });
+
+    $('.filter-dates-current').click(function() {
+        $(this).parent().toggleClass('mobile-open');
+    });
+
+    $(document).click(function(e) {
+        if ($(e.target).parents().filter('.filter-dates').length == 0) {
+            $('.filter-dates').removeClass('mobile-open');
+        }
+    });
+
+    var isFirstClick = false;
+    $('.filter-dates-mobile-item').click(function() {
+        if (isFirstClick) {
+            isFirstClick = false;
+            $(this).addClass('active to');
+            var fromIndex = $('.filter-dates-mobile-item').index($('.filter-dates-mobile-item.active.from'));
+            var toIndex = $('.filter-dates-mobile-item').index($('.filter-dates-mobile-item.active.to'));
+            if (fromIndex > toIndex) {
+                var tmpIndex = toIndex;
+                toIndex = fromIndex;
+                fromIndex = tmpIndex;
+                $('.filter-dates-mobile-item').eq(fromIndex).removeClass('to').addClass('from');
+                $('.filter-dates-mobile-item').eq(toIndex).removeClass('from').addClass('to');
+            }
+            for (var i = fromIndex + 1; i < toIndex; i++) {
+                $('.filter-dates-mobile-item').eq(i).addClass('active');
+            }
+            $('.filter-slider-range-inner')[0].noUiSlider.set([fromIndex + 1, toIndex + 1]);
+        } else {
+            isFirstClick = true;
+            $('.filter-dates-mobile-item').removeClass('from to active');
+            $(this).addClass('active from');
+        }
+        updateDatesCurrent();
+    });
+
 });
+
+function updateEvents() {
+    $('.events-wrap').addClass('loading');
+    var curForm = $('.filter form');
+    var curData = curForm.serialize();
+    curData += '&page=' + $('.pager a.active').attr('data-value');
+    curData += '&size=' + $('.page-size input:checked').val();
+    $.ajax({
+        type: 'POST',
+        url: curForm.attr('action'),
+        dataType: 'html',
+        data: curData,
+        cache: false
+    }).done(function(html) {
+        $('.events').html($(html).find('.events').html())
+        $('.paging .pager').html($(html).find('.pager').html())
+        $('.events-wrap').removeClass('loading');
+    });
+}
+
+function updateDatesCurrent() {
+    if ($('.filter-dates-mobile-item:not(.active)').length == 0) {
+        $('.filter-dates-current span').html($('.filter-dates-current span').attr('data-placeholder'));
+    } else {
+        var curHTML = '';
+        $('.filter-dates-mobile-item.from').each(function() {
+            curHTML += $(this).html() + ' - ';
+        });
+        $('.filter-dates-mobile-item.to').each(function() {
+            curHTML += $(this).html();
+        });
+        $('.filter-dates-current span').html(curHTML);
+    }
+}

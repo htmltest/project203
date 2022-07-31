@@ -159,4 +159,8 @@
         <path d="M9 1L2 8L9 15" stroke-width="2" />
     </symbol>
 
+    <symbol viewBox="0 0 17 15" id="filter-arrow">
+        <path d="M2.66917 3.99487L1.47606 5.0063L8.21678 10.7206L14.9575 5.0063L13.7644 3.99487L8.21678 8.69773L2.66917 3.99487Z" />
+    </symbol>
+
 </svg>

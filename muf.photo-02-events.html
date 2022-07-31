@@ -7,6 +7,7 @@
         <link rel="stylesheet" href="css/styles.css" />
         <link rel="stylesheet" href="js/slick/slick.css" />
         <link rel="stylesheet" href="js/mcustomscrollbar/jquery.mCustomScrollbar.css" />
+        <link rel="stylesheet" href="js/nouislider/nouislider.css" />
 
         <meta http-equiv="x-ua-compatible" content="ie=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -45,7 +46,11 @@
                             <div class="welcome-slider-item-container">
                                 <div class="welcome-slider-item-bg"><img src="files/welcome-slider-city.svg" alt="" /></div>
                                 <div class="welcome-slider-item-bg-mobile"><img src="files/welcome-slider-city-mobile.svg" alt="" /></div>
-                                <div class="welcome-slider-item-content">
+                                <div class="welcome-slider-item-content welcome-slider-item-content-page">
+                                    <div class="welcome-slider-item-top">
+                                        <a href="#" class="welcome-slider-item-top-back"><svg><use xlink:href="images/sprite.svg#icon-back"></use></svg>Фотобанк</a>
+                                        <a href="#" class="welcome-slider-item-top-favorite"><svg><use xlink:href="images/sprite.svg#icon-favorite"></use></svg>Избранное</a>
+                                    </div>
                                     <div class="welcome-slider-item-header"><strong>Moscow Urban Forum 2022</strong><span>|</span>1—21 августа 2022</div>
                                     <div class="welcome-slider-item-title">Город для каждого</div>
                                     <div class="welcome-slider-item-subtitle">Выставка ключевых градостроительных и&nbsp;инфраструктурных проектов Москвы</div>
@@ -61,11 +66,78 @@
                 <div class="container">
 
                     <div class="filter">
-                        <form action="#" method="post">
+                        <form action="ajax/events.html" method="post">
                             <div class="filter-dates">
+                                <div class="filter-dates-content">
+                                    <div class="filter-dates-line filter-dates-line-1" style="left:0"></div>
+                                    <div class="filter-dates-line filter-dates-line-2" style="left:30%"></div>
+                                    <div class="filter-dates-line filter-dates-line-3" style="left:65%"></div>
+                                    <div class="filter-dates-line filter-dates-line-4" style="right:0"></div>
+                                    <div class="filter-dates-month">Август</div>
+                                    <div class="filter-slider">
+                                        <input type="hidden" name="from" value="1" class="filter-slider-from" />
+                                        <input type="hidden" name="to" value="21" class="filter-slider-to" />
+                                        <div class="filter-slider-range">
+                                            <div class="filter-slider-range-inner"></div>
+                                        </div>
+                                        <div class="filter-slider-params">
+                                            <div class="filter-slider-min">1</div>
+                                            <div class="filter-slider-max">21</div>
+                                            <div class="filter-slider-step">1</div>
+                                        </div>
+                                    </div>
+                                    <div class="filter-dates-list">
+                                        <div class="filter-dates-list-date" style="left:0"><span>пн</span><strong>01</strong></div>
+                                        <div class="filter-dates-list-date" style="left:5%"><span>вт</span></div>
+                                        <div class="filter-dates-list-date" style="left:10%"><span>ср</span><strong>03</strong></div>
+                                        <div class="filter-dates-list-date" style="left:15%"><span>чт</span></div>
+                                        <div class="filter-dates-list-date" style="left:20%"><span>пт</span><strong>05</strong></div>
+                                        <div class="filter-dates-list-date" style="left:25%"><span>сб</span></div>
+                                        <div class="filter-dates-list-date" style="left:30%"><span>вс</span><strong>07</strong></div>
+                                        <div class="filter-dates-list-date" style="left:35%"><span>пн</span></div>
+                                        <div class="filter-dates-list-date" style="left:40%"><span>вт</span><strong>09</strong></div>
+                                        <div class="filter-dates-list-date" style="left:45%"><span>ср</span></div>
+                                        <div class="filter-dates-list-date" style="left:50%"><span>чт</span><strong>11</strong></div>
+                                        <div class="filter-dates-list-date" style="left:55%"><span>пт</span></div>
+                                        <div class="filter-dates-list-date" style="left:60%"><span>сб</span><strong>13</strong></div>
+                                        <div class="filter-dates-list-date" style="left:65%"><span>вс</span></div>
+                                        <div class="filter-dates-list-date" style="left:70%"><span>пн</span><strong>15</strong></div>
+                                        <div class="filter-dates-list-date" style="left:75%"><span>вт</span></div>
+                                        <div class="filter-dates-list-date" style="left:80%"><span>ср</span><strong>17</strong></div>
+                                        <div class="filter-dates-list-date" style="left:85%"><span>чт</span></div>
+                                        <div class="filter-dates-list-date" style="left:90%"><span>пт</span><strong>19</strong></div>
+                                        <div class="filter-dates-list-date" style="left:95%"><span>сб</span></div>
+                                        <div class="filter-dates-list-date" style="right:0"><span>вс</span><strong>21</strong></div>
+                                    </div>
+                                </div>
+                                <div class="filter-dates-current"><span data-placeholder="Все даты форума"></span><svg><use xlink:href="images/sprite.svg#filter-arrow"></use></svg></div>
+                                <div class="filter-dates-mobile-list">
+                                    <div class="filter-dates-mobile-item">1 августа</div>
+                                    <div class="filter-dates-mobile-item">2 августа</div>
+                                    <div class="filter-dates-mobile-item">3 августа</div>
+                                    <div class="filter-dates-mobile-item">4 августа</div>
+                                    <div class="filter-dates-mobile-item">5 августа</div>
+                                    <div class="filter-dates-mobile-item">6 августа</div>
+                                    <div class="filter-dates-mobile-item">7 августа</div>
+                                    <div class="filter-dates-mobile-item">8 августа</div>
+                                    <div class="filter-dates-mobile-item">9 августа</div>
+                                    <div class="filter-dates-mobile-item">10 августа</div>
+                                    <div class="filter-dates-mobile-item">11 августа</div>
+                                    <div class="filter-dates-mobile-item">12 августа</div>
+                                    <div class="filter-dates-mobile-item">13 августа</div>
+                                    <div class="filter-dates-mobile-item">14 августа</div>
+                                    <div class="filter-dates-mobile-item">15 августа</div>
+                                    <div class="filter-dates-mobile-item">16 августа</div>
+                                    <div class="filter-dates-mobile-item">17 августа</div>
+                                    <div class="filter-dates-mobile-item">18 августа</div>
+                                    <div class="filter-dates-mobile-item">19 августа</div>
+                                    <div class="filter-dates-mobile-item">20 августа</div>
+                                    <div class="filter-dates-mobile-item">21 августа</div>
+                                </div>
                             </div>
 
                             <div class="filter-tags">
+                                <div class="filter-tags-current"><span data-placeholder="Все мероприятия форума"></span><svg><use xlink:href="images/sprite.svg#filter-arrow"></use></svg></div>
                                 <div class="filter-tags-list">
                                     <label><input type="checkbox" name="tag[01]"><span>Конференция</span></label>
                                     <label><input type="checkbox" name="tag[02]" checked><span>Панельная дискуссия</span></label>
@@ -91,132 +163,136 @@
                         </form>
                     </div>
 
-                    <!-- events -->
-                    <div class="events">
-                        <div class="events-item">
-                            <a href="#">
-                                <div class="events-item-bg" style="background-image:url(files/events-1.jpg)">
-                                    <div class="events-item-date">4.07.2017</div>
-                                    <div class="events-item-count"><svg><use xlink:href="images/sprite.svg#icon-photos"></use></svg>103</div>
-                                </div>
-                                <div class="events-item-title">Панельная дискуссия «Дом для миллениала. Форматы недвижимости для современных горожан»</div>
-                            </a>
+                    <!-- events wrap -->
+                    <div class="events-wrap">
+                        <!-- events -->
+                        <div class="events">
+                            <div class="events-item">
+                                <a href="#">
+                                    <div class="events-item-bg" style="background-image:url(files/events-1.jpg)">
+                                        <div class="events-item-date">4.07.2017</div>
+                                        <div class="events-item-count"><svg><use xlink:href="images/sprite.svg#icon-photos"></use></svg>103</div>
+                                    </div>
+                                    <div class="events-item-title">Панельная дискуссия «Дом для миллениала. Форматы недвижимости для современных горожан»</div>
+                                </a>
+                            </div>
+                            <div class="events-item">
+                                <a href="#">
+                                    <div class="events-item-bg" style="background-image:url(files/events-2.jpg)">
+                                        <div class="events-item-date">4.07.2017</div>
+                                        <div class="events-item-count"><svg><use xlink:href="images/sprite.svg#icon-photos"></use></svg>103</div>
+                                    </div>
+                                    <div class="events-item-title">Интервью Ричарда Сеннета Екатерине Шульман</div>
+                                </a>
+                            </div>
+                            <div class="events-item">
+                                <a href="#">
+                                    <div class="events-item-bg" style="background-image:url(files/events-3.jpg)">
+                                        <div class="events-item-date">4.07.2017</div>
+                                        <div class="events-item-count"><svg><use xlink:href="images/sprite.svg#icon-photos"></use></svg>103</div>
+                                    </div>
+                                    <div class="events-item-title">Панельная дискуссия «Офис напрокат. Как будет выглядеть рабочее место будущего?»</div>
+                                </a>
+                            </div>
+                            <div class="events-item">
+                                <a href="#">
+                                    <div class="events-item-bg" style="background-image:url(files/events-1.jpg)">
+                                        <div class="events-item-date">4.07.2017</div>
+                                        <div class="events-item-count"><svg><use xlink:href="images/sprite.svg#icon-photos"></use></svg>103</div>
+                                    </div>
+                                    <div class="events-item-title">Панельная дискуссия «Дом для миллениала. Форматы недвижимости для современных горожан»</div>
+                                </a>
+                            </div>
+                            <div class="events-item">
+                                <a href="#">
+                                    <div class="events-item-bg" style="background-image:url(files/events-2.jpg)">
+                                        <div class="events-item-date">4.07.2017</div>
+                                        <div class="events-item-count"><svg><use xlink:href="images/sprite.svg#icon-photos"></use></svg>103</div>
+                                    </div>
+                                    <div class="events-item-title">Интервью Ричарда Сеннета Екатерине Шульман</div>
+                                </a>
+                            </div>
+                            <div class="events-item">
+                                <a href="#">
+                                    <div class="events-item-bg" style="background-image:url(files/events-3.jpg)">
+                                        <div class="events-item-date">4.07.2017</div>
+                                        <div class="events-item-count"><svg><use xlink:href="images/sprite.svg#icon-photos"></use></svg>103</div>
+                                    </div>
+                                    <div class="events-item-title">Панельная дискуссия «Офис напрокат. Как будет выглядеть рабочее место будущего?»</div>
+                                </a>
+                            </div>
+                            <div class="events-item">
+                                <a href="#">
+                                    <div class="events-item-bg" style="background-image:url(files/events-1.jpg)">
+                                        <div class="events-item-date">4.07.2017</div>
+                                        <div class="events-item-count"><svg><use xlink:href="images/sprite.svg#icon-photos"></use></svg>103</div>
+                                    </div>
+                                    <div class="events-item-title">Панельная дискуссия «Дом для миллениала. Форматы недвижимости для современных горожан»</div>
+                                </a>
+                            </div>
+                            <div class="events-item">
+                                <a href="#">
+                                    <div class="events-item-bg" style="background-image:url(files/events-2.jpg)">
+                                        <div class="events-item-date">4.07.2017</div>
+                                        <div class="events-item-count"><svg><use xlink:href="images/sprite.svg#icon-photos"></use></svg>103</div>
+                                    </div>
+                                    <div class="events-item-title">Интервью Ричарда Сеннета Екатерине Шульман</div>
+                                </a>
+                            </div>
+                            <div class="events-item">
+                                <a href="#">
+                                    <div class="events-item-bg" style="background-image:url(files/events-3.jpg)">
+                                        <div class="events-item-date">4.07.2017</div>
+                                        <div class="events-item-count"><svg><use xlink:href="images/sprite.svg#icon-photos"></use></svg>103</div>
+                                    </div>
+                                    <div class="events-item-title">Панельная дискуссия «Офис напрокат. Как будет выглядеть рабочее место будущего?»</div>
+                                </a>
+                            </div>
                         </div>
-                        <div class="events-item">
-                            <a href="#">
-                                <div class="events-item-bg" style="background-image:url(files/events-2.jpg)">
-                                    <div class="events-item-date">4.07.2017</div>
-                                    <div class="events-item-count"><svg><use xlink:href="images/sprite.svg#icon-photos"></use></svg>103</div>
-                                </div>
-                                <div class="events-item-title">Интервью Ричарда Сеннета Екатерине Шульман</div>
-                            </a>
-                        </div>
-                        <div class="events-item">
-                            <a href="#">
-                                <div class="events-item-bg" style="background-image:url(files/events-3.jpg)">
-                                    <div class="events-item-date">4.07.2017</div>
-                                    <div class="events-item-count"><svg><use xlink:href="images/sprite.svg#icon-photos"></use></svg>103</div>
-                                </div>
-                                <div class="events-item-title">Панельная дискуссия «Офис напрокат. Как будет выглядеть рабочее место будущего?»</div>
-                            </a>
-                        </div>
-                        <div class="events-item">
-                            <a href="#">
-                                <div class="events-item-bg" style="background-image:url(files/events-1.jpg)">
-                                    <div class="events-item-date">4.07.2017</div>
-                                    <div class="events-item-count"><svg><use xlink:href="images/sprite.svg#icon-photos"></use></svg>103</div>
-                                </div>
-                                <div class="events-item-title">Панельная дискуссия «Дом для миллениала. Форматы недвижимости для современных горожан»</div>
-                            </a>
-                        </div>
-                        <div class="events-item">
-                            <a href="#">
-                                <div class="events-item-bg" style="background-image:url(files/events-2.jpg)">
-                                    <div class="events-item-date">4.07.2017</div>
-                                    <div class="events-item-count"><svg><use xlink:href="images/sprite.svg#icon-photos"></use></svg>103</div>
-                                </div>
-                                <div class="events-item-title">Интервью Ричарда Сеннета Екатерине Шульман</div>
-                            </a>
-                        </div>
-                        <div class="events-item">
-                            <a href="#">
-                                <div class="events-item-bg" style="background-image:url(files/events-3.jpg)">
-                                    <div class="events-item-date">4.07.2017</div>
-                                    <div class="events-item-count"><svg><use xlink:href="images/sprite.svg#icon-photos"></use></svg>103</div>
-                                </div>
-                                <div class="events-item-title">Панельная дискуссия «Офис напрокат. Как будет выглядеть рабочее место будущего?»</div>
-                            </a>
-                        </div>
-                        <div class="events-item">
-                            <a href="#">
-                                <div class="events-item-bg" style="background-image:url(files/events-1.jpg)">
-                                    <div class="events-item-date">4.07.2017</div>
-                                    <div class="events-item-count"><svg><use xlink:href="images/sprite.svg#icon-photos"></use></svg>103</div>
-                                </div>
-                                <div class="events-item-title">Панельная дискуссия «Дом для миллениала. Форматы недвижимости для современных горожан»</div>
-                            </a>
-                        </div>
-                        <div class="events-item">
-                            <a href="#">
-                                <div class="events-item-bg" style="background-image:url(files/events-2.jpg)">
-                                    <div class="events-item-date">4.07.2017</div>
-                                    <div class="events-item-count"><svg><use xlink:href="images/sprite.svg#icon-photos"></use></svg>103</div>
-                                </div>
-                                <div class="events-item-title">Интервью Ричарда Сеннета Екатерине Шульман</div>
-                            </a>
-                        </div>
-                        <div class="events-item">
-                            <a href="#">
-                                <div class="events-item-bg" style="background-image:url(files/events-3.jpg)">
-                                    <div class="events-item-date">4.07.2017</div>
-                                    <div class="events-item-count"><svg><use xlink:href="images/sprite.svg#icon-photos"></use></svg>103</div>
-                                </div>
-                                <div class="events-item-title">Панельная дискуссия «Офис напрокат. Как будет выглядеть рабочее место будущего?»</div>
-                            </a>
-                        </div>
-                    </div>
-                    <!-- events END -->
+                        <!-- events END -->
 
-                    <!-- paging -->
-                    <div class="paging">
+                        <!-- paging -->
+                        <div class="paging">
 
-                        <div class="pager">
-                            <a href="#" class="pager-prev" data-value="prev"><svg><use xlink:href="images/sprite.svg#pager-prev"></use></svg></a>
-                            <a href="#" class="active" data-value="1">1</a>
-                            <a href="#" data-value="2">2</a>
-                            <a href="#" data-value="3">3</a>
-                            <span>...</span>
-                            <a href="#" data-value="12">12</a>
-                            <a href="#" data-value="13">13</a>
-                            <a href="#" data-value="14">14</a>
-                            <a href="#" class="pager-next" data-value="next"><svg><use xlink:href="images/sprite.svg#pager-next"></use></svg></a>
-                        </div>
+                            <div class="pager">
+                                <a href="#" class="pager-prev" data-value="prev"><svg><use xlink:href="images/sprite.svg#pager-prev"></use></svg></a>
+                                <a href="#" class="active" data-value="1">1</a>
+                                <a href="#" data-value="2">2</a>
+                                <a href="#" data-value="3">3</a>
+                                <span>...</span>
+                                <a href="#" data-value="12">12</a>
+                                <a href="#" data-value="13">13</a>
+                                <a href="#" data-value="14">14</a>
+                                <a href="#" class="pager-next" data-value="next"><svg><use xlink:href="images/sprite.svg#pager-next"></use></svg></a>
+                            </div>
 
-                        <div class="page-size">
-                            <div class="page-size-title">На странице:</div>
-                            <div class="page-size-value">
-                                <div class="page-size-select">
-                                    <div class="page-size-select-current"><span>20</span><svg><use xlink:href="images/sprite.svg#page-size"></use></svg></div>
-                                    <div class="page-size-select-list">
-                                        <div class="page-size-select-item">
-                                            <label><input type="radio" name="size" value="20" checked="checked" /><span>20</span></label>
-                                        </div>
-                                        <div class="page-size-select-item">
-                                            <label><input type="radio" name="size" value="40" /><span>40</span></label>
-                                        </div>
-                                        <div class="page-size-select-item">
-                                            <label><input type="radio" name="size" value="60" /><span>60</span></label>
-                                        </div>
-                                        <div class="page-size-select-item">
-                                            <label><input type="radio" name="size" value="80" /><span>80</span></label>
+                            <div class="page-size">
+                                <div class="page-size-title">На странице:</div>
+                                <div class="page-size-value">
+                                    <div class="page-size-select">
+                                        <div class="page-size-select-current"><span>20</span><svg><use xlink:href="images/sprite.svg#page-size"></use></svg></div>
+                                        <div class="page-size-select-list">
+                                            <div class="page-size-select-item">
+                                                <label><input type="radio" name="size" value="20" checked="checked" /><span>20</span></label>
+                                            </div>
+                                            <div class="page-size-select-item">
+                                                <label><input type="radio" name="size" value="40" /><span>40</span></label>
+                                            </div>
+                                            <div class="page-size-select-item">
+                                                <label><input type="radio" name="size" value="60" /><span>60</span></label>
+                                            </div>
+                                            <div class="page-size-select-item">
+                                                <label><input type="radio" name="size" value="80" /><span>80</span></label>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
+                        </div>
+                        <!-- paging END -->
                     </div>
-                    <!-- paging END -->
+                    <!-- events wrap END -->
 
                 </div>
                 <!-- container END -->
@@ -242,6 +318,8 @@
         <script src="js/slick/slick.min.js"></script>
         <script src="js/mcustomscrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
         <script src="js/masonry.pkgd.min.js"></script>
+        <script src="js/nouislider/nouislider.min.js"></script>
+        <script src="js/nouislider/wNumb.js"></script>
         <script src="js/tools.js"></script>
 
     </body>
