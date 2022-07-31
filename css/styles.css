@@ -104,8 +104,8 @@ header::after {content:""; display:block; clear:both}
 .logo-title {float:left; margin:28px 0 0 44px; font-weight:300; font-size:20px; line-height:30px; color:#FFFFFF; text-transform:uppercase}
 
 @media screen and (max-width:1199px) {
-    .logo {margin:0; width:120px; height:80px; padding:13px 0 0 17px; background:#FFFFFF}
-    .logo svg {width:79px; height:52px; fill:#000000}
+    .logo {margin:0; padding:16px 0 0 20px; width:141px}
+    .logo svg {width:98px; height:48px}
     .logo-title {margin:27px 0 0 17px}
 }
 
@@ -165,6 +165,7 @@ header::after {content:""; display:block; clear:both}
 .welcome-slider-item-container {position:relative}
 .welcome-slider-item-bg {position:absolute; left:0; top:0; right:0; bottom:0; overflow:hidden}
 .welcome-slider-item-bg img {display:block; position:absolute; left:50%; bottom:0; max-width:none; transform:translateX(-50%)}
+.welcome-slider-item-bg-tablet {display:none}
 .welcome-slider-item-bg-mobile {display:none}
 .welcome-slider-item-container .container {position:relative}
 .welcome-slider-item-content {position:relative; padding:102px 60px 80px 60px}
@@ -179,6 +180,9 @@ header::after {content:""; display:block; clear:both}
 .welcome-slider-item-top-favorite:hover {background:#000000; color:#FFFFFF}
 .welcome-slider-item-top-favorite svg {display:inline-block; vertical-align:middle; margin:-2px 6px 0 0; width:24px; height:24px; fill:#000000; transition:fill 0.2s}
 .welcome-slider-item-top-favorite:hover svg {fill:#FFFFFF}
+.welcome-slider-item-top-favorite svg:nth-child(2) {display:none}
+.welcome-slider-item-top-favorite.active svg:nth-child(1) {display:none}
+.welcome-slider-item-top-favorite.active svg:nth-child(2) {display:inline-block; fill:#FF2F66}
 .welcome-slider-item-header {font-size:24px; line-height:31px; color:#818382; letter-spacing:0}
 .welcome-slider-item-header strong {font-weight:normal; color:#353F56}
 .welcome-slider-item-header span {margin:0 15px}
@@ -206,11 +210,11 @@ header::after {content:""; display:block; clear:both}
 
 @media screen and (max-width:1199px) {
     .welcome-slider-item-bg {display:none}
-    .welcome-slider-item-bg-mobile {display:block; left:0; top:0; right:0; bottom:0}
-    .welcome-slider-item-bg-mobile img {display:block; position:absolute; left:0; top:-100px; max-width:none}
-    .welcome-slider-item-content {padding:184px 20px 77px 20px}
+    .welcome-slider-item-bg-tablet {display:block; left:0; top:0; right:0; bottom:0; overflow:hidden}
+    .welcome-slider-item-bg-tablet img {display:block; position:absolute; right:0; bottom:0; max-width:none}
+    .welcome-slider-item-content {padding:184px 220px 77px 20px}
     .welcome-slider-item-content-page {padding-top:20px; padding-bottom:76px}
-    .welcome-slider-item-top {margin:0 0 120px 0}
+    .welcome-slider-item-top {margin:0 -200px 120px 0}
     .welcome-slider-item-header {font-size:20px; line-height:26px}
     .welcome-slider-item-header strong {display:block; margin:0 0 5px 0}
     .welcome-slider-item-header span {display:none}
@@ -223,6 +227,14 @@ header::after {content:""; display:block; clear:both}
     .welcome-slider-item-btn a {background:#FFFFFF; border:none; height:44px; padding:0 20px; font-weight:500; font-size:12px; line-height:44px; color:#000000}
     .welcome-slider-item-btn a svg {width:24px; height:24px; fill:#000000}
     .welcome-slider .slick-dots {bottom:19px}
+}
+
+@media screen and (max-width:767px) {
+    .welcome-slider-item-bg-tablet {display:none}
+    .welcome-slider-item-bg-mobile {display:block; left:0; top:0; right:0; bottom:0; overflow:hidden}
+    .welcome-slider-item-bg-mobile img {display:block; position:absolute; left:0; top:-100px; max-width:none}
+    .welcome-slider-item-top {margin:0 0 120px 0}
+    .welcome-slider-item-content {padding-right:20px}
 }
 
 .forums {margin:50px 0 0 0}
@@ -396,6 +408,9 @@ header::after {content:""; display:block; clear:both}
 .event-header-favorite:hover {background:#000000; color:#FFFFFF}
 .event-header-favorite svg {display:inline-block; vertical-align:middle; margin:-2px 6px 0 0; width:24px; height:24px; fill:#000000; transition:fill 0.2s}
 .event-header-favorite:hover svg {fill:#FFFFFF}
+.event-header-favorite svg:nth-child(2) {display:none}
+.event-header-favorite.active svg:nth-child(1) {display:none}
+.event-header-favorite.active svg:nth-child(2) {display:inline-block; fill:#FF2F66}
 
 @media screen and (max-width:1199px) {
     .event-header {margin:20px 0 0 0}
@@ -468,9 +483,13 @@ header::after {content:""; display:block; clear:both}
 .event-photos-item-share svg {display:block; width:20px; height:20px; fill:#FFFFFF; transition:fill 0.2s}
 .event-photos-item-share:hover svg {fill:#FF2F66}
 .event-photos-item-favorite {position:absolute; left:230px; bottom:25px; transition:opacity 0.2s; opacity:0}
+.event-photos-item-favorite.active,
 .event-photos-item-inner:hover .event-photos-item-favorite {opacity:1}
 .event-photos-item-favorite svg {display:block; width:20px; height:20px; fill:#FFFFFF; transition:fill 0.2s}
 .event-photos-item-favorite:hover svg {fill:#FF2F66}
+.event-photos-item-favorite svg:nth-child(2) {display:none}
+.event-photos-item-favorite.active svg:nth-child(1) {display:none}
+.event-photos-item-favorite.active svg:nth-child(2) {display:inline-block; fill:#FF2F66}
 .event-photos-item-data {display:none}
 
 @media screen and (max-width:1199px) {
@@ -652,6 +671,9 @@ footer {margin:-60px 0 0 0; height:60px; border-top:1px solid #E7E7E7; backgroun
 .window-photo-slider-list-item-header a:first-child {margin-left:0}
 .window-photo-slider-list-item-header a svg {display:block; width:20px; height:20px; fill:#FFFFFF; transition:fill 0.2s}
 .window-photo-slider-list-item-header a:hover svg {fill:#FF2F66}
+.window-photo-slider-list-item-header a svg:nth-child(2) {display:none}
+.window-photo-slider-list-item-header a.active svg:nth-child(1) {display:none}
+.window-photo-slider-list-item-header a.active svg:nth-child(2) {display:inline-block; fill:#FF2F66}
 .window-photo-slider-list-item-inner {display:block; width:100%; text-align:center}
 .window-photo-slider .slick-slide img,
 .window-photo-slider-list-item-inner img {display:inline-block; vertical-align:middle; max-height:100%}

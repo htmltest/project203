@@ -149,9 +149,13 @@ $(document).ready(function() {
 
         for (var i = 0; i < galleryLength; i++) {
             var curGalleryItem = curGallery.find('.event-photos-item').eq(i);
+            var favoriteActive = '';
+            if (curGalleryItem.find('.event-photos-item-favorite').hasClass('active')) {
+                favoriteActive = ' active';
+            }
             windowHTML +=               '<div class="window-photo-slider-list-item">' +
                                             '<div class="window-photo-slider-list-item-header">' +
-                                                '<a href="' + curGalleryItem.find('.event-photos-item-favorite').attr('href') + '" class="window-photo-item-favorite"><svg><use xlink:href="' + pathTemplate + 'images/sprite.svg#icon-favorite"></use></svg></a>' +
+                                                '<a href="' + curGalleryItem.find('.event-photos-item-favorite').attr('href') + '" class="window-photo-item-favorite' + favoriteActive + '"><svg><use xlink:href="' + pathTemplate + 'images/sprite.svg#icon-favorite"></use></svg><svg><use xlink:href="' + pathTemplate + 'images/sprite.svg#icon-favorite-active"></use></svg></a>' +
                                                 '<a href="' + curGalleryItem.find('.event-photos-item-email').attr('href') + '" class="window-photo-item-email"><svg><use xlink:href="' + pathTemplate + 'images/sprite.svg#icon-email"></use></svg></a>' +
                                                 '<a href="' + curGalleryItem.find('.event-photos-item-print').attr('href') + '" class="window-photo-item-print"><svg><use xlink:href="' + pathTemplate + 'images/sprite.svg#icon-print"></use></svg></a>' +
                                             '</div>' +
@@ -403,6 +407,30 @@ $(document).ready(function() {
             $(this).addClass('active from');
         }
         updateDatesCurrent();
+    });
+
+    $('body').on('click', '.welcome-slider-item-top-favorite, .event-header-favorite, .event-photos-item-favorite', function(e) {
+        var curLink = $(this);
+        $.ajax({
+            type: 'POST',
+            url: curLink.attr('href'),
+            cache: false
+        });
+        curLink.toggleClass('active');
+        e.preventDefault();
+    });
+
+    $('body').on('click', '.window-photo-item-favorite', function(e) {
+        var curLink = $(this);
+        $.ajax({
+            type: 'POST',
+            url: curLink.attr('href'),
+            cache: false
+        });
+        curLink.toggleClass('active');
+        var curIndex = $('.window-photo-item-favorite').index(curLink);
+        $('.event-photos-item-favorite').eq(curIndex).toggleClass('active');
+        e.preventDefault();
     });
 
 });
