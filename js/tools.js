@@ -96,10 +96,28 @@ $(document).ready(function() {
     }
 
     $('body').on('click', '.window-photo-social-item-vk', function(e) {
-        var curTitle = encodeURIComponent($('title').html());
-        var curUrl = encodeURIComponent(window.location.href);
+        var curTitle = $(this).attr('data-sharetitle');
+        var curUrl = encodeURIComponent($(this).attr('data-sharelink'));
 
         popupCenter('https://vk.com/share.php?url=' + curUrl + '&description=' + curTitle, curTitle);
+
+        e.preventDefault();
+    });
+
+    $('body').on('click', '.window-photo-social-item-whatsapp', function(e) {
+        var curTitle = $(this).attr('data-sharetitle');
+        var curUrl = encodeURIComponent($(this).attr('data-sharelink'));
+
+        popupCenter('whatsapp://send?text=' + curUrl);
+
+        e.preventDefault();
+    });
+
+    $('body').on('click', '.window-photo-social-item-tg', function(e) {
+        var curTitle = $(this).attr('data-sharetitle');
+        var curUrl = encodeURIComponent($(this).attr('data-sharelink'));
+
+        popupCenter('https://t.me/share/url?url=' + curUrl + '&text=' + curTitle);
 
         e.preventDefault();
     });
@@ -138,9 +156,9 @@ $(document).ready(function() {
         windowHTML +=           '<div class="window-photo-social">';
         windowHTML +=               '<div class="window-photo-social-icon"><svg><use xlink:href="' + pathTemplate + 'images/sprite.svg#window-photo-share"></use></svg></div>';
         windowHTML +=               '<div class="window-photo-social-window">';
-        windowHTML +=                   '<a href="#" class="window-photo-social-item window-photo-social-item-vk"><svg><use xlink:href="' + pathTemplate + 'images/sprite.svg#window-photo-share-vk"></use></svg></a>';
-        windowHTML +=                   '<a href="#" class="window-photo-social-item window-photo-social-item-whatsapp"><svg><use xlink:href="' + pathTemplate + 'images/sprite.svg#window-photo-share-whatsapp"></use></svg></a>';
-        windowHTML +=                   '<a href="#" class="window-photo-social-item window-photo-social-item-tg"><svg><use xlink:href="' + pathTemplate + 'images/sprite.svg#window-photo-share-tg"></use></svg></a>';
+        windowHTML +=                   '<a href="#" class="window-photo-social-item window-photo-social-item-vk" data-sharelink="' + curGalleryItem.find('.window-photo-social-item-vk').attr('data-sharelink') + '" data-sharetitle="' + curGalleryItem.find('.window-photo-social-item-vk').attr('data-sharetitle') + '"><svg><use xlink:href="' + pathTemplate + 'images/sprite.svg#window-photo-share-vk"></use></svg></a>';
+        windowHTML +=                   '<a href="#" class="window-photo-social-item window-photo-social-item-whatsapp" data-sharelink="' + curGalleryItem.find('.window-photo-social-item-whatsapp').attr('data-sharelink') + '" data-sharetitle="' + curGalleryItem.find('.window-photo-social-item-whatsapp').attr('data-sharetitle') + '"><svg><use xlink:href="' + pathTemplate + 'images/sprite.svg#window-photo-share-whatsapp"></use></svg></a>';
+        windowHTML +=                   '<a href="#" class="window-photo-social-item window-photo-social-item-tg" data-sharelink="' + curGalleryItem.find('.window-photo-social-item-tg').attr('data-sharelink') + '" data-sharetitle="' + curGalleryItem.find('.window-photo-social-item-tg').attr('data-sharetitle') + '"><svg><use xlink:href="' + pathTemplate + 'images/sprite.svg#window-photo-share-tg"></use></svg></a>';
         windowHTML +=               '</div>';
         windowHTML +=           '</div>';
 
@@ -409,7 +427,7 @@ $(document).ready(function() {
         updateDatesCurrent();
     });
 
-    $('body').on('click', '.welcome-slider-item-top-favorite, .event-header-favorite, .event-photos-item-favorite', function(e) {
+    $('body').on('click', '.event-photos-item-favorite', function(e) {
         var curLink = $(this);
         $.ajax({
             type: 'POST',
