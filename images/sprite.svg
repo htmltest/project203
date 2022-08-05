@@ -181,4 +181,13 @@
         <path d="M2.66917 3.99487L1.47606 5.0063L8.21678 10.7206L14.9575 5.0063L13.7644 3.99487L8.21678 8.69773L2.66917 3.99487Z" />
     </symbol>
 
+    <symbol viewBox="0 0 24 25" id="page-404-link">
+        <path d="M4.49961 21.272V12.022L2.62461 13.447L1.72461 12.247L4.49961 10.122V7.24697H5.99961V8.97197L11.9996 4.39697L22.2746 12.247L21.3746 13.422L19.4996 12.022V21.272H4.49961ZM5.99961 19.772H10.7996V15.397H13.1996V19.772H17.9996V10.872L11.9996 6.29697L5.99961 10.872V19.772Z" />
+    </symbol>
+
+    <symbol viewBox="0 0 18 18" id="window-close">
+        <path d="M16.6183 1.41333L1.61829 16.4133" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        <path d="M1.61829 1.41333L16.6183 16.4133" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+    </symbol>
+
 </svg>
