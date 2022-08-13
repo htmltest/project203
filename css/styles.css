@@ -320,8 +320,15 @@ header::after {content:""; display:block; clear:both}
 .filter-dates-month {position:absolute; left:10px; top:10px; font-size:12px; line-height:16px; color:#A5A5A5}
 .filter-dates-list {position:absolute; left:0; top:51px; bottom:41px; right:0; pointer-events:none}
 .filter-dates-list-date {position:absolute; top:31px; width:1px; height:9px; background:#000000}
-.filter-dates-list-date span {position:absolute; left:50%; top:-26px; transform:translateX(-50%); font-size:12px; line-height:16px; color:#A5A5A5}
+.filter-dates-list-date span {position:absolute; left:50%; top:-26px; transform:translateX(-50%); font-size:12px; line-height:16px; color:#000000}
 .filter-dates-list-date strong {position:absolute; left:50%; top:19px; transform:translateX(-50%); font-size:14px; line-height:18px; color:#000000; font-weight:normal}
+.filter-dates-list-date-future {background:#A5A5A5}
+.filter-dates-list-date-future span {color:#A5A5A5}
+.filter-dates-list-date-future strong {color:#A5A5A5}
+.filter-dates-list-date-today {background:none}
+.filter-dates-list-date-today::before {content:""; display:block; position:absolute; left:-10px; top:-8px; width:20px; height:20px; border:5px solid #FFFFFF; background:#FB2D60; border-radius:50%}
+.filter-dates-list-date-today em {font-style:normal; display:block; position:absolute; left:50%; top:-55px; transform:translateX(-50%); white-space:nowrap; height:19px; background:#FB2D60; padding:0 10px; font-size:12px; line-height:19px; border-radius:2px; color:#FFFFFF}
+.filter-dates-list-date-today em::before {content:""; display:block; width:10px; height:10px; background:#FB2D60; border-radius:2px; position:absolute; left:50%; bottom:-4px; margin-left:-5px; transform:rotate(45deg); z-index:-1}
 
 @media screen and (max-width:1199px) {
     .filter-dates {background:none; padding:0; position:relative}
@@ -339,13 +346,15 @@ header::after {content:""; display:block; clear:both}
     .filter-dates-mobile-list {z-index:999; position:absolute; left:0; top:100%; margin:-1px 0 0 0; right:0; background:#FFFFFF; border:1px solid #000000; max-height:250px; overflow:auto; padding:20px; font-size:0; line-height:0; letter-spacing:-1px}
     .filter-dates.mobile-open .filter-dates-mobile-list {display:block}
     .filter-dates-mobile-item {display:inline-block; width:25%; vertical-align:top; cursor:pointer; height:44px; font-size:14px; line-height:42px; text-align:center; letter-spacing:0; color:#A5A5A5; border:1px solid #FFFFFF}
+    .filter-dates-mobile-item.disabled {pointer-events:none; color:#DADADA}
     .filter-dates-mobile-item.active {background:#F7F7F7; color:#000000; border-color:#F7F7F7}
     .filter-dates-mobile-item.active.from {background:#000000; color:#FFFFFF}
     .filter-dates-mobile-item.active.to {border-color:#000000}
 }
 
 .filter-slider {position:absolute; left:0; top:82px; right:0}
-.filter-slider-range {position:relative; height:4px; background:#DADADA}
+.filter-slider-range {position:relative; height:4px; background:#EEEEEE}
+.filter-slider-range-active {position:absolute; left:0; top:0; bottom:0; background:#DADADA}
 .filter-slider-range-inner {position:relative}
 .filter-slider-params {display:none}
 

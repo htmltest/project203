@@ -293,9 +293,14 @@ $(document).ready(function() {
         if (Number(curSlider.find('.filter-slider-to').val()) !== 0) {
             curStartTo = Number(curSlider.find('.filter-slider-to').val());
         }
+        var curLimit = 0;
+        if (curSlider.find('.filter-slider-limit').length == 1) {
+            curLimit = [0, Number(curSlider.find('.filter-slider-max').html()) - Number(curSlider.find('.filter-slider-limit').html())];
+        }
         noUiSlider.create(curRange, {
             start: [curStartFrom, curStartTo],
             connect: true,
+            padding: curLimit,
             range: {
                 'min': Number(curSlider.find('.filter-slider-min').html()),
                 'max': Number(curSlider.find('.filter-slider-max').html())
