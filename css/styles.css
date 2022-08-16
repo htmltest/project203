@@ -482,19 +482,28 @@ header::after {content:""; display:block; clear:both}
     .event-title {margin:40px 0 0 0; text-align:left}
 }
 
-.event-info {margin:15px 0 0 0; text-align:center; font-size:18px; line-height:22px; color:#9C9C9C}
-.event-info span {margin:0 20px}
+.event-info {margin:29px 0 0 0; text-align:center; font-size:16px; line-height:30px; color:#9C9C9C}
+.event-info span {margin:0 16px}
+.event-info a {margin:0 5px 0 40px; display:inline-block; vertical-align:middle; height:30px; font-size:14px; text-decoration:none; color:#414141; padding:0 12px; background:#EEEEEE; transition:color 0.2s, background 0.2s}
+.event-info a+a {margin:0 5px}
+.event-info a:hover {color:#FFFFFF; background:#000000}
+.event-info-tags {display:inline}
 
 @media screen and (min-width:1800px) {
-    .event-info {margin:30px 0 0 0; font-size:22px; line-height:31px}
+    .event-info {margin:30px 0 0 0; font-size:22px; line-height:36px}
+    .event-info a {height:36px; font-size:18px}
 }
 
 @media screen and (max-width:1199px) {
-    .event-info {text-align:left; line-height:25px}
+    .event-info {margin:15px 0 0 0; font-size:18px; text-align:left; line-height:25px}
+    .event-info-tags {display:block; margin:0 0 0 -10px; line-height:30px}
+    .event-info a {margin:10px 0 0 10px}
+    .event-info a+a {margin:10px 0 0 10px}
 }
 
 @media screen and (max-width:767px) {
     .event-info {margin:20px 0 0 0}
+    .event-info span {margin:0 10px}
 }
 
 @media screen and (max-width:479px) {
@@ -516,7 +525,7 @@ header::after {content:""; display:block; clear:both}
 .event-ctrl-download a:hover svg {fill:#FFFFFF}
 
 @media screen and (max-width:1199px) {
-    .event-ctrl {margin:20px 0 0 0}
+    .event-ctrl {margin:40px 0 0 0}
     .event-ctrl-views a {margin:0 0 0 35px}
     .event-ctrl-views a:first-child {margin:0}
     .event-ctrl-views a svg {width:26px; height:20px}
