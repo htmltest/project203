@@ -48,48 +48,57 @@
                 <div class="container">
 
                     <div class="event-header">
-                        <a href="#" class="event-header-back"><svg><use xlink:href="images/sprite.svg#icon-back"></use></svg>к мероприятию</a>
+                        <a href="#" class="event-header-back"><svg><use xlink:href="images/sprite.svg#icon-back"></use></svg>к списку мероприятий</a>
                     </div>
 
-                    <h1 class="card-photo-title">Панельная дискуссия «Дом для миллениала.<br /> Форматы недвижимости для современных горожан»</h1>
+                    <h1 class="lk-event-add-title">Добавление мероприятия</h1>
+                    
+                    <div class="lk-event-add-form">
+                        <form action="#" method="post">
+                            <div class="tabs">
+                                <div class="tabs-menu"></div>
 
-                    <div class="card-photo-ctrl">
-                        <div class="card-photo-ctrl-item">
-                            <a href="#" class="btn btn-print"><svg><use xlink:href="images/sprite.svg#icon-print"></use></svg>Печать</a>
-                        </div>
-                        <div class="card-photo-ctrl-item">
-                            <a href="#" class="btn"><svg><use xlink:href="images/sprite.svg#icon-share"></use></svg>Поделиться</a>
-                            <div class="window-photo-social-window">
-                                <a href="#" class="window-photo-social-item window-photo-social-item-vk" data-sharelink="#" data-sharetitle="заголовок для шаринга"><svg><use xlink:href="images/sprite.svg#window-photo-share-vk"></use></svg></a>
-                                <a href="#" class="window-photo-social-item window-photo-social-item-whatsapp" data-sharelink="#" data-sharetitle="заголовок для шаринга"><svg><use xlink:href="images/sprite.svg#window-photo-share-whatsapp"></use></svg></a>
-                                <a href="#" class="window-photo-social-item window-photo-social-item-tg" data-sharelink="#" data-sharetitle="заголовок для шаринга"><svg><use xlink:href="images/sprite.svg#window-photo-share-tg"></use></svg></a>
+                                <div class="tabs-container">
+                                    <div class="tabs-content active" data-title="Данные мероприятия">
+                                        <h6>Информация о мероприятии</h6>
+
+                                        <div class="form-label">Название</div>
+                                        <div class="form-input"><input type="text" name="name" value="" class="required" /></div>
+
+                                        <div class="form-label">Дата съемки</div>
+                                        <div class="form-input"><input type="text" name="date" value="" class="required" /></div>
+
+                                        <div class="form-label">Время съемки</div>
+                                        <div class="form-input"><input type="text" name="time" value="" class="required" /></div>
+
+                                        <div class="form-label">Теги</div>
+                                        <div class="form-input"><input type="text" name="tags" value="" class="required" /></div>
+
+                                        <h6>Общие параметры фотографий</h6>
+
+                                        <div class="form-label">место</div>
+                                        <div class="form-input"><input type="text" name="place" value="" class="required" /></div>
+
+                                        <div class="form-label">Автор</div>
+                                        <div class="form-input"><input type="text" name="author" value="" class="required" /></div>
+
+                                        <div class="form-label">Источник</div>
+                                        <div class="form-input"><input type="text" name="source" value="" class="required" /></div>
+                                    </div>
+
+                                    <div class="tabs-content" data-title="Фотографии">
+                                        <div class="form-label">Загрузка файлов</div>
+                                        <div class="form-files">
+                                            <div class="form-files-dropzone"><span>Перетащите сюда файлы<br /> или кликните для выбора</span></div>
+                                            <div class="form-files-input"><input type="file" name="files[]" multiple="multiple" data-uploadurl="upload/" data-uploadfiles="upload/files/" data-removeurl="upload/remove.php" /><span class="btn">Добавить файл</span></div>
+                                            <div class="form-files-list"></div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-
-                    <div class="card-photo-img"><img src="files/card-photo.jpg" alt="" /></div>
-
-                    <div class="card-photo-data">
-                        <div class="card-photo-data-row">
-                            <div class="card-photo-data-row-name">Дата съемки:</div>
-                            <div class="card-photo-data-row-value">04.07.2019 &nbsp;|&nbsp; 15:37</div>
-                        </div>
-                        <div class="card-photo-data-row">
-                            <div class="card-photo-data-row-name">Мероприятие:</div>
-                            <div class="card-photo-data-row-value">Деловая программа</div>
-                        </div>
-                        <div class="card-photo-data-row">
-                            <div class="card-photo-data-row-name">Место:</div>
-                            <div class="card-photo-data-row-value">г. Москва, Российская Федерация</div>
-                        </div>
-                        <div class="card-photo-data-row">
-                            <div class="card-photo-data-row-name">Автор:</div>
-                            <div class="card-photo-data-row-value">Шамуков Руслан</div>
-                        </div>
-                        <div class="card-photo-data-row">
-                            <div class="card-photo-data-row-name">Источник:</div>
-                            <div class="card-photo-data-row-value">Фотохост-агентство ТАСС</div>
-                        </div>
+                            
+                            <div class="form-submit"><button type="submit" class="btn">Сохранить</button></div>
+                        </form>
                     </div>
 
                 </div>

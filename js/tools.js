@@ -478,12 +478,96 @@ $(document).ready(function() {
         e.preventDefault();
     });
 
+    $('body').on('click', '.form-files-list-item-remove', function(e) {
+        var curLink = $(this);
+        var curFiles = curLink.parents().filter('.form-files');
+        $.ajax({
+            type: 'GET',
+            url: curLink.attr('href'),
+            dataType: 'json',
+            cache: false
+        }).done(function(data) {
+            curLink.parent().remove();
+            if (curFiles.find('.form-files-list-item-progress, .form-files-list-item').length == 0) {
+                curFiles.removeClass('full');
+            }
+        });
+        e.preventDefault();
+    });
+
+    $('body').on('click', '.form-files-list-item-cancel', function(e) {
+        var curLink = $(this);
+        var curFiles = curLink.parents().filter('.form-files');
+        curLink.parent().remove();
+        if (curFiles.find('.form-files-list-item-progress, .form-files-list-item').length == 0) {
+            curFiles.removeClass('full');
+        }
+        e.preventDefault();
+    });
+
+    $(document).bind('drop dragover', function (e) {
+        e.preventDefault();
+    });
+
+    $(document).bind('dragover', function (e) {
+        var dropZones = $('.form-files-dropzone'),
+            timeout = window.dropZoneTimeout;
+        if (timeout) {
+            clearTimeout(timeout);
+        } else {
+            dropZones.addClass('in');
+        }
+        var hoveredDropZone = $(e.target).closest(dropZones);
+        dropZones.not(hoveredDropZone).removeClass('hover');
+        hoveredDropZone.addClass('hover');
+        window.dropZoneTimeout = setTimeout(function () {
+            window.dropZoneTimeout = null;
+            dropZones.removeClass('in hover');
+        }, 100);
+    });
+
+    $('body').on('click', '.form-files-dropzone', function(e) {
+        var curLink = $(this);
+        var curFiles = $(this).parents().filter('.form-files');
+        curFiles.find('.form-files-input input').click();
+        e.preventDefault();
+    });
+
     $('form').each(function() {
         initForm($(this));
     });
 
     $('body').on('click', '.btn-print', function(e) {
         window.print();
+        e.preventDefault();
+    });
+
+    $('.tabs').each(function() {
+        var curTabs = $(this);
+        var newHTML = '<ul>';
+        curTabs.find('.tabs-content').each(function() {
+            var curTab = $(this);
+            newHTML += '<li><a href="#">' + curTab.attr('data-title') + '</a></li>';
+            if (curTabs.hasClass('tabs-with-titles')) {
+                curTab.wrapInner('<div class="tabs-content-inner"></div>')
+                curTab.prepend('<div class="tabs-content-title"><svg><use xlink:href="' + pathTemplate + 'images/sprite.svg#tabs-content-title"></use></svg>' + curTab.attr('data-title') + '</div>');
+            }
+        });
+        newHTML += '</ul>';
+        curTabs.find('.tabs-menu').html(newHTML);
+        curTabs.find('.tabs-menu li').eq(0).addClass('active');
+    });
+
+    $('body').on('click', '.tabs-menu a', function(e) {
+        var curItem = $(this).parent();
+        if (!curItem.hasClass('active')) {
+            var curTabs = curItem.parents().filter('.tabs');
+            curTabs.find('.tabs-menu li.active').removeClass('active');
+            curItem.addClass('active');
+            var curIndex = curTabs.find('.tabs-menu li').index(curItem);
+            curTabs.find('.tabs-content.active').removeClass('active');
+            curTabs.find('.tabs-content').eq(curIndex).addClass('active');
+        }
         e.preventDefault();
     });
 
@@ -595,6 +679,35 @@ function windowClose() {
 }
 
 function initForm(curForm) {
+    curForm.find('.form-files').each(function() {
+        var curFiles = $(this);
+        var curInput = curFiles.find('.form-files-input input');
+
+        var uploadURL = curInput.attr('data-uploadurl');
+        var uploadFiles = curInput.attr('data-uploadfiles');
+        var removeURL = curInput.attr('data-removeurl');
+        curInput.fileupload({
+            url: uploadURL,
+            dataType: 'json',
+            dropZone: curFiles.find('.form-files-dropzone'),
+            pasteZone: curFiles.find('.form-files-dropzone'),
+            add: function(e, data) {
+                curFiles.find('.form-files-list').append('<div class="form-files-list-item-progress"><span class="form-files-list-item-cancel"><svg><use xlink:href="' + pathTemplate + 'images/sprite.svg#file-remove"></use></svg></span></div>');
+                data.submit();
+                curFiles.addClass('full');
+            },
+            done: function (e, data) {
+                curFiles.find('.form-files-list-item-progress').eq(0).remove();
+                if (data.result.status == 'success') {
+                    curFiles.find('.form-files-list').append('<div class="form-files-list-item"><div class="form-files-list-item-icon"><svg><use xlink:href="' + pathTemplate + 'images/sprite.svg#file-icon-2"></use></svg><span>' + data.result.ext + '</span></div><div class="form-files-list-item-name">' + data.result.path + '</div><div class="form-files-list-item-size">' + Number(data.result.size).toFixed(2) + ' Мб</div><a href="' + removeURL + '?file=' + data.result.path + '" class="form-files-list-item-remove"><svg><use xlink:href="' + pathTemplate + 'images/sprite.svg#file-remove"></use></svg></a></div>');
+                } else {
+                    curFiles.find('.form-files-list').append('<div class="form-files-list-item error"><div class="form-files-list-item-icon"><svg><use xlink:href="' + pathTemplate + 'images/sprite.svg#file-icon-2"></use></svg></div><div class="form-files-list-item-name">' + data.result.text + '</div><a href="' + removeURL + '?file=' + data.result.path + '" class="form-files-list-item-remove"><svg><use xlink:href="' + pathTemplate + 'images/sprite.svg#file-remove"></use></svg></a></div>');
+                }
+                curFiles.addClass('full');
+            }
+        });
+    });
+
     curForm.validate({
         ignore: '',
         submitHandler: function(form) {
