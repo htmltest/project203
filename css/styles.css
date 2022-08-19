@@ -11,7 +11,7 @@ body {min-width:320px; height:100%; margin:0; padding:0; font:18px/27px Arial, s
     body {font-size:20px; line-height:30px}
 }
 
-a {color:#000000; transition:all 0.2s}
+a {color:#000000; transition:color 0.2s}
 a:hover {color:#FF2F66; text-decoration:none}
 
 img {border:none; max-width:100%; height:auto}
@@ -67,10 +67,6 @@ ol ol li::before {content:counter(point)'.'counter(subpoint); counter-increment:
 .btn:hover {color:#FFFFFF; background:#000000}
 .btn svg {display:inline-block; vertical-align:middle; width:24px; height:24px; margin:-2px 6px 0 0; fill:none; fill:#000000; transition:fill 0.2s}
 .btn:hover svg {fill:#FFFFFF}
-
-@media screen and (min-width:1800px) {
-    .btn {height:60px; font-size:18px; line-height:60px}
-}
 
 .form-input {margin:20px 0; position:relative}
 .form-input input {position:relative; border:1px solid #d9d9d9; font:500 16px/24px Arial, sans-serif; color:#000000; vertical-align:top; margin:0; padding:9px; width:100%; height:44px; box-sizing:border-box; outline:none; border-radius:0; background:#FDFDFD; -webkit-appearance:none; transition:border-color 0.2s}
@@ -183,18 +179,19 @@ label.error {display:block; font-size:12px; line-height:18px; color:#bd423a; mar
 }
 
 .wrapper {width:100%; min-width:320px; min-height:100%; position:relative; overflow:hidden}
-.wrapper-inner {padding:0 0 120px 0}
+.wrapper-inner {padding:80px 0 120px 0}
 
 @media screen and (max-width:1199px) {
-    .wrapper-inner {padding:0 0 180px 0}
+    .wrapper-inner {padding:80px 0 180px 0}
 }
 
 @media screen and (max-width:479px) {
-    .wrapper-inner {padding:0 0 200px 0}
+    .wrapper-inner {padding:80px 0 200px 0}
 }
 
-header {height:80px; background:#000000}
-header::after {content:""; display:block; clear:both}
+header {position:fixed; left:0; top:0; right:0; z-index:99; height:80px; background:#000000}
+
+.header-fixed header {height:60px}
 
 .logo {float:left; margin:20px 0 0 20px; width:98px}
 .logo svg {display:block; width:98px; height:48px; fill:#FFFFFF}
@@ -210,12 +207,28 @@ header::after {content:""; display:block; clear:both}
     .logo-title {display:none}
 }
 
+.header-fixed .logo {width:74px; margin:15px 0 0 20px}
+.header-fixed .logo svg {width:74px; height:36px}
+.header-fixed .logo-title {margin:18px 0 0 75px; font-size:18px; line-height:27px}
+
+@media screen and (max-width:1199px) {
+    .header-fixed .logo {margin:15px 0 0 20px; width:74px; padding:0}
+    .header-fixed .logo svg {width:74px; height:36px}
+    .header-fixed .logo-title {margin:18px 0 0 18px; font-size:18px; line-height:27px}
+}
+
 .header-right {float:right}
 
 .header-lang {float:right; margin:28px 50px 0 0; width:27px; height:27px; background:#FFFFFF; border-radius:50%; text-decoration:none; font-weight:500; font-size:12px; line-height:28px; text-align:center}
 
 @media screen and (max-width:1199px) {
     .header-lang {float:left; margin:20px 0 0 0; width:40px; height:40px; font-size:18px; line-height:40px}
+}
+
+.header-fixed .header-lang {margin:18px 50px 0 0}
+
+@media screen and (max-width:1199px) {
+    .header-fixed .header-lang {margin:10px 0 0 0}
 }
 
 .header-search-link {float:right; margin:30px 30px 0 0; width:24px; height:24px; position:relative; transition:none}
@@ -225,6 +238,13 @@ header::after {content:""; display:block; clear:both}
 @media screen and (max-width:1199px) {
     .header-search-link {margin:23px 20px 0 20px; width:34px; height:34px}
     .header-search-link svg {width:34px; height:34px}
+}
+
+.header-fixed .header-search-link {margin:20px 30px 0 0}
+
+@media screen and (max-width:1199px) {
+    .header-fixed .header-search-link {margin:13px 20px 0 20px; width:34px; height:34px}
+    .header-fixed .header-search-link svg {width:34px; height:34px}
 }
 
 .header-search {position:absolute; left:121px; top:0; right:0; height:80px; z-index:2; background:#FFFFFF; visibility:hidden; opacity:0; transition:visibility 0.2s, opacity 0.2s}
@@ -255,6 +275,16 @@ header::after {content:""; display:block; clear:both}
     .header-search-submit button svg {display:none}
     .header-search-close {right:0; top:0; width:100%; height:100%}
     .header-search-close svg {left:auto; right:14px; top:30px; width:24px; height:23px; margin:0; stroke:#FFFFFF; stroke-width:3px}
+}
+
+.header-fixed .header-search {height:60px}
+.header-fixed .header-search form {padding:7px 159px 0 30px}
+.header-fixed .header-search-close {height:60px}
+
+@media screen and (max-width:1199px) {
+    .header-fixed .header-search {left:0; height:auto}
+    .header-fixed .header-search form {padding:89px 20px 0 20px}
+    .header-fixed .header-search-close {height:100%}
 }
 
 .welcome-slider {position:relative; font-size:0; line-height:0; letter-spacing:-1px; white-space:nowrap; overflow:hidden; background:#F7F2F0}
@@ -413,8 +443,8 @@ header::after {content:""; display:block; clear:both}
 .filter-tags-current {display:none}
 .filter-tags-list {display:inline}
 .filter-tags-list label {display:inline-block; vertical-align:top; margin:10px 0 0 10px; cursor:pointer}
-.filter-tags-list label:nth-child(n+17) {display:none}
-.filter-tags.open .filter-tags-list label:nth-child(n+17) {display:inline-block}
+.filter-tags-list label.hidden {display:none}
+.filter-tags.open .filter-tags-list label.hidden {display:inline-block}
 .filter-tags-list label input {display:none}
 .filter-tags-list label span {display:block; padding:11px 12px; background:#EEEEEE; color:#414141; font-size:14px; line-height:21px; letter-spacing:0; transition:background 0.2s, color 0.2s}
 .filter-tags-list label input:checked+span {background:#000000; color:#FFFFFF}
@@ -437,8 +467,8 @@ header::after {content:""; display:block; clear:both}
     .filter-tags.mobile-open .filter-tags-list {display:block}
     .filter-tags-list label {display:block; margin:0; cursor:pointer; border-top:1px solid #000000}
     .filter-tags-list label:first-child {border-top:none}
-    .filter-tags-list label:nth-child(n+17) {display:block}
-    .filter-tags.open .filter-tags-list label:nth-child(n+17) {display:block}
+    .filter-tags-list label.hidden {display:block}
+    .filter-tags.open .filter-tags-list label.hidden {display:block}
     .filter-tags-list label span {padding:11px 20px 11px 41px; position:relative; color:#414141; background:#FFFFFF}
     .filter-tags-list label input:checked+span {background:#FFFFFF; color:#000000}
     .filter-tags-list label span::before {content:""; display:block; width:20px; height:20px; border:1px solid #C8C9CC; position:absolute; left:11px; top:11px; background:url(../images/checkbox.svg) no-repeat -999px -999px}
@@ -451,7 +481,9 @@ header::after {content:""; display:block; clear:both}
 .events {margin:30px -10px -40px -10px; font-size:0; line-height:0; letter-spacing:-1px}
 .events-item {display:inline-block; vertical-align:top; width:33.33%; padding:0 10px 40px 10px}
 .events-item a {display:block; text-decoration:none}
-.events-item-bg {height:233px; position:relative; background:no-repeat center; background-size:cover}
+.events-item-bg {height:233px; position:relative; overflow:hidden}
+.events-item-bg-inner {position:absolute; left:0; top:0; right:0; bottom:0; background:no-repeat center; background-size:cover; transition:transform 0.5s}
+.events-item a:hover .events-item-bg-inner {transform:scale(1.086)}
 .events-item-date {position:absolute; left:10px; top:10px; padding:0 15px; height:30px; font-size:14px; line-height:30px; letter-spacing:0; color:#FFFFFF; background:rgba(0, 0, 0, 0.8)}
 .events-item-count {position:absolute; right:10px; top:10px; padding:0 10px; height:30px; font-weight:500; font-size:14px; line-height:30px; letter-spacing:0.05em; color:#FFFFFF; background:#000000; opacity:0.8}
 .events-item-count svg {display:inline-block; vertical-align:middle; margin:-2px 2px 0 0; width:24px; height:24px; fill:#FFFFFF}
@@ -516,11 +548,6 @@ header::after {content:""; display:block; clear:both}
 .event-header-favorite svg {display:inline-block; vertical-align:middle; margin:-2px 6px 0 0; width:24px; height:24px; fill:#000000; transition:fill 0.2s}
 .event-header-favorite:hover svg {fill:#FFFFFF}
 
-@media screen and (min-width:1800px) {
-    .event-header-back {height:60px; font-size:18px; line-height:60px}
-    .event-header-favorite {height:60px; font-size:18px; line-height:60px}
-}
-
 @media screen and (max-width:1199px) {
     .event-header {margin:20px 0 0 0}
     .event-header-back {height:auto; padding:17px 20px; line-height:16px}
@@ -528,6 +555,10 @@ header::after {content:""; display:block; clear:both}
 }
 
 .event-title {margin:30px 0 0 0; text-align:center; font-size:30px; line-height:45px}
+
+@media screen and (min-width:1800px) {
+    .event-title {font-size:44px; line-height:62px}
+}
 
 @media screen and (max-width:1199px) {
     .event-title {margin:40px 0 0 0; text-align:left}
@@ -541,8 +572,8 @@ header::after {content:""; display:block; clear:both}
 .event-info-tags {display:inline}
 
 @media screen and (min-width:1800px) {
-    .event-info {margin:30px 0 0 0; font-size:22px; line-height:36px}
-    .event-info a {height:36px; font-size:18px}
+    .event-info {margin:30px 0 0 0; font-size:18px; line-height:27px}
+    .event-info a {height:36px; font-size:14px; line-height:36px}
 }
 
 @media screen and (max-width:1199px) {
@@ -570,7 +601,7 @@ header::after {content:""; display:block; clear:both}
 .event-ctrl-views a.event-ctrl-views-2 svg {width:21px}
 .event-ctrl-views a.active svg {fill:#000000}
 .event-ctrl-download {margin:0 150px; text-align:center}
-.event-ctrl-download a {display:inline-block; vertical-align:top; height:44px; border:2px solid #000000; padding:0 18px; color:#000000; text-decoration:none; font-weight:600; font-size:14px; line-height:40px; letter-spacing:0.05em; text-transform:uppercase; transition:color 0.2s, background 0.2s}
+.event-ctrl-download a {display:inline-block; vertical-align:top; height:44px; padding:0 20px; color:#000000; text-decoration:none; font-weight:600; font-size:14px; line-height:44px; letter-spacing:0.05em; text-transform:uppercase; background:#f4f4f4; transition:color 0.2s, background 0.2s}
 .event-ctrl-download a:hover {background:#000000; color:#FFFFFF}
 .event-ctrl-download a svg {display:inline-block; vertical-align:middle; margin:-2px 6px 0 0; width:24px; height:24px; fill:#000000; transition:fill 0.2s}
 .event-ctrl-download a:hover svg {fill:#FFFFFF}
@@ -631,6 +662,10 @@ header::after {content:""; display:block; clear:both}
 .event-photos-item-favorite.active svg:nth-child(1) {display:none}
 .event-photos-item-favorite.active svg:nth-child(2) {display:inline-block; fill:#FF2F66}
 .event-photos-item-data {display:none}
+
+@media screen and (min-width:1800px) {
+    .event-photos-item {width:20%}
+}
 
 @media screen and (max-width:1199px) {
     .event-photos {margin:30px -10px -20px -10px}
@@ -895,8 +930,8 @@ footer {margin:-60px 0 0 0; height:60px; border-top:1px solid #E7E7E7; backgroun
 
 .window-email {width:787px}
 .window-email-container {padding:20px 30px 56px 30px}
-.window-email-photo {line-height:0}
-.window-email-photo img {display:block; width:100%}
+.window-email-photo {line-height:0; text-align:center}
+.window-email-photo img {display:block; margin:0 auto; max-width:100%; max-height:50vh}
 .window-email-title {margin:11px 0 0 0; font-size:18px; line-height:25px}
 .window-email-form {margin:40px 0 0 0}
 .window-email-form form {margin:0; padding:0}
@@ -912,10 +947,6 @@ footer {margin:-60px 0 0 0; height:60px; border-top:1px solid #E7E7E7; backgroun
     .window-email-container {padding:30px 30px 70px 30px}
     .window-email-title {margin:20px 0 0 0; font-size:22px; line-height:31px}
     .window-email-form {margin:51px 0 0 0}
-    .window-email-form .form-input {width:calc(100% - 217px)}
-    .window-email-form .form-input input {padding:17px 0 9px 0; font-size:22px; line-height:33px; height:60px}
-    .window-email-form .form-input span {top:-11px; font-size:14px; line-height:18px}
-    .window-email-submit {width:187px}
 }
 
 @media screen and (max-width:1199px) {
@@ -1053,3 +1084,9 @@ footer {margin:-60px 0 0 0; height:60px; border-top:1px solid #E7E7E7; backgroun
 .tabs-content {position:absolute; left:-99999px; top:-99999px; width:100%; opacity:0; transition:opacity 0.2s}
 .tabs-content.active {position:relative; left:auto; top:auto; opacity:1}
 .tabs-content-title {display:none}
+
+.up-link {display:block; opacity:0; visibility:hidden; position:fixed; z-index:90; right:60px; bottom:60px; width:44px; height:44px; background:#F4F4F4; transition:opacity 0.2s, background-color 0.2s}
+.up-link.visible {opacity:1; visibility:visible}
+.up-link:hover {background:#000000}
+.up-link svg {display:block; width:44px; height:44px; fill:#000000; transition:fill 0.2s}
+.up-link:hover svg {fill:#FFFFFF}
