@@ -527,8 +527,41 @@ $(document).ready(function() {
         e.preventDefault();
     });
 
+    $('body').on('focus', '.form-input input, .form-input textarea', function() {
+        $(this).parent().addClass('focus');
+    });
+
+    $('body').on('blur', '.form-input input, .form-input textarea', function() {
+        $(this).parent().removeClass('focus');
+        if ($(this).val() != '') {
+            $(this).parent().addClass('full');
+        } else {
+            $(this).parent().removeClass('full');
+        }
+    });
+
+    $('body').on('input', '.form-input textarea', function() {
+        this.style.height = (this.scrollHeight) + 'px';
+    });
+
+	$('body').on('click', '.form-input-clear', function(e) {
+		$(this).parent().find('input').val('').trigger('change').trigger('blur');
+		e.preventDefault();
+	});
+
     $('form').each(function() {
         initForm($(this));
+    });
+
+    $('body').on('click', '.view-password', function(e) {
+        var curField = $(this).parent();
+        curField.toggleClass('viewed');
+        if (curField.hasClass('viewed')) {
+            curField.find('input').attr('type', 'text');
+        } else {
+            curField.find('input').attr('type', 'password');
+        }
+        e.preventDefault();
     });
 
     $('body').on('click', '.btn-print', function(e) {
@@ -640,6 +673,18 @@ $(window).on('load resize', function() {
         });
     });
 
+    $('.lk-events-item-photos').each(function() {
+        var curBlock = $(this);
+        var countAll = Number(curBlock.find('.lk-events-item-photos-item-more').attr('data-count'));
+        var countCurrent = curBlock.find('.lk-events-item-photos-item:visible').length;
+        if (countAll > countCurrent) {
+            curBlock.find('.lk-events-item-photos-item-more').addClass('visible');
+            curBlock.find('.lk-events-item-photos-item-more strong').html(countAll - countCurrent);
+        } else {
+            curBlock.find('.lk-events-item-photos-item-more').removeClass('visible');
+        }
+    });
+
 });
 
 function windowOpen(linkWindow, dataWindow) {
@@ -698,6 +743,20 @@ function windowClose() {
 }
 
 function initForm(curForm) {
+    curForm.find('.form-input input, .form-input textarea').each(function() {
+        if ($(this).val() != '') {
+            $(this).parent().addClass('full');
+        }
+    });
+
+    curForm.find('.form-input input:focus, .form-input textarea:focus').each(function() {
+        $(this).trigger('focus');
+    });
+
+    curForm.find('.form-input textarea').each(function() {
+        $(this).css({'height': this.scrollHeight, 'overflow-y': 'hidden'});
+    });
+
     curForm.find('.form-files').each(function() {
         var curFiles = $(this);
         var curInput = curFiles.find('.form-files-input input');

@@ -69,18 +69,23 @@ ol ol li::before {content:counter(point)'.'counter(subpoint); counter-increment:
 .btn:hover svg {fill:#FFFFFF}
 
 .form-input {margin:20px 0; position:relative}
-.form-input input {position:relative; border:1px solid #d9d9d9; font:500 16px/24px Arial, sans-serif; color:#000000; vertical-align:top; margin:0; padding:9px; width:100%; height:44px; box-sizing:border-box; outline:none; border-radius:0; background:#FDFDFD; -webkit-appearance:none; transition:border-color 0.2s}
+.form-input+.form-input {margin-top:20px}
+.form-input > span {position:absolute; left:0; top:19px; font-size:12px; line-height:16px; color:#ABABAB; text-transform:uppercase; letter-spacing:0.05em; transition:all 0.2s; pointer-events:none; z-index:1}
+.form-input.focus > span,
+.form-input.full > span {font-size:8px; line-height:10px; top:0}
+.form-input input {position:relative; border:none; border-bottom:1px solid #ABABAB; font:500 16px/24px Arial, sans-serif; color:#000000; vertical-align:top; margin:0; padding:14px 0 5px 0; width:100%; height:44px; box-sizing:border-box; outline:none; border-radius:0; background:transparent; -webkit-appearance:none; transition:border-color 0.2s}
 .fonts-loaded .form-input input {font-family:GraphikLCG, sans-serif}
-.form-input input::-webkit-input-placeholder {opacity:1; color:#B0B0B0}
-.form-input input::-moz-placeholder {opacity:1; color:#B0B0B0}
-.form-input input:-ms-input-placeholder {opacity:1; color:#B0B0B0}
+.form-input input::-webkit-input-placeholder {opacity:1; color:#ABABAB}
+.form-input input::-moz-placeholder {opacity:1; color:#ABABAB}
+.form-input input:-ms-input-placeholder {opacity:1; color:#ABABAB}
+.form-input input.error {border-color:#ea1e1e}
 .form-input input:hover {border-color:#8E8E8E}
 .form-input input:focus {border-color:#000000}
 .form-input input:-webkit-autofill,
 .form-input input:-webkit-autofill:active,
 .form-input input:-webkit-autofill:focus,
 .form-input input:-webkit-autofill:hover {-webkit-text-fill-color:#000000; caret-color:#000000; -webkit-transition:background-color 999999s ease-in-out 0s; transition:background-color 999999s ease-in-out 0s}
-label.error {display:block; font-size:12px; line-height:18px; color:#bd423a; margin:5px 0 0 0; text-align:right}
+label.error {display:block; font-size:12px; line-height:18px; color:#ea1e1e; margin:5px 0 0 0; text-align:right}
 
 @media screen and (max-width:1199px) {
     .form-input input {font-size:18px; line-height:64px; height:66px}
@@ -89,20 +94,22 @@ label.error {display:block; font-size:12px; line-height:18px; color:#bd423a; mar
     .form-input input:-ms-input-placeholder {color:#8A8A8A}
 }
 
-.form-checkbox {margin:10px 0; color:#414141; font-size:14px; line-height:22px}
+.view-password {position:absolute; right:4px; top:16px}
+.view-password svg {display:block; width:24px; height:24px; fill:#ABABAB; transition:fill 0.2s}
+.view-password:hover svg {fill:#000000}
+
+.form-checkbox {margin:20px 0; font-size:16px; line-height:24px}
 .form-checkbox::after {content:""; display:block; clear:both}
 .form-checkbox label {float:left; display:block; cursor:pointer; position:relative}
 .form-checkbox input {display:none}
-.form-checkbox span {display:block; position:relative; padding:0 0 0 30px}
-.form-checkbox span::before {content:""; display:block; width:20px; height:20px; border:1px solid #c8c9cc; position:absolute; left:0; top:0; background:url(../images/checkbox.svg) no-repeat -999px -999px}
+.form-checkbox span {display:block; position:relative; padding:0 0 0 26px}
+.form-checkbox span::before {content:""; display:block; width:20px; height:20px; border:1px solid #000000; position:absolute; left:0; top:2px; background:url(../images/checkbox.svg) no-repeat -999px -999px}
 .form-checkbox input.error+span,
 .form-checkbox input.error+label.error+span {padding-bottom:23px}
 .form-checkbox input.error+span::before,
-.form-checkbox input.error+label.error+span::before {border-color:#f17a7a}
+.form-checkbox input.error+label.error+span::before {border-color:#ea1e1e}
 .form-checkbox input:checked+span::before,
-.form-checkbox input:checked+label.error+span::before {background-position:center; border-color:#000; background-color:#000}
-.form-checkbox input:disabled+span {color:#a5a5a5; cursor:default}
-.form-checkbox input:disabled+span::before {border-color:#ededee; background-color:#ededee}
+.form-checkbox input:checked+label.error+span::before {background-position:center; background-color:#000}
 .form-checkbox label.error {position:absolute; right:0; bottom:0; white-space:nowrap}
 
 .form-files {margin:30px 0}
@@ -1040,32 +1047,46 @@ footer {margin:-60px 0 0 0; height:60px; border-top:1px solid #E7E7E7; backgroun
     .card-photo-ctrl {display:none}
 }
 
-.auth {max-width:424px; margin:80px auto 0 auto}
-.auth h1 {text-align:center}
+.auth {max-width:424px; margin:140px auto 0 auto}
+.auth h1 {text-align:center; font-size:50px; line-height:65px; margin:0}
 .auth-form {margin:40px 0 0 0}
 .auth-form form {margin:0; padding:0}
-.auth-form .form-label {margin-top:25px}
-.auth-form .form-input {margin-bottom:0}
 .auth-form .form-checkbox {margin-top:20px}
 .auth-btn {margin:40px 0 0 0; text-align:center}
 
+.lk-events-info {margin:30px 0 0 0; font-size:18px; line-height:23px; color:#717171}
+.lk-events-info span {margin:0 15px}
+
+.lk-events-title {margin:5px 0 0 0; font-size:36px; line-height:50px}
+
 .lk-events-header {margin:40px 0 0 0}
 .lk-events-header::after {content:""; display:block; clear:both}
-.lk-events-header h1 {float:left; margin:0}
-.lk-events-header .btn {float:right}
+.lk-events-header-text {float:left; margin:6px 0 0 0; font-weight:bold; font-size:24px; line-height:31px}
+.lk-events-header-ctrl {float:right}
+.lk-events-header .btn {float:left; margin:0 0 0 10px}
+.lk-events-header .btn:first-child {margin:0}
+.btn-filter svg {fill:none; stroke:#000000; transition:stroke 0.2s}
+.btn-filter:hover svg {fill:none; stroke:#FFFFFF}
 
-.lk-events {margin:30px 0 0 0; border-top:1px solid #D6D6D6}
+.lk-events {margin:20px 0 0 0; border-top:1px solid #D6D6D6}
 .lk-events-item {border-bottom:1px solid #D6D6D6; padding:20px 0}
-.lk-events-item-title {font-size:22px; line-height:31px}
-.lk-events-item-date {margin:5px 0 0 0; font-size:18px; line-height:23px; color:#ABABAB}
-.lk-events-item-photos {margin:15px -10px 0 -10px}
+.lk-events-item-info {font-size:16px; line-height:30px; color:#717171}
+.lk-events-item-info span {margin:0 10px}
+.lk-events-item-info a {display:inline-block; vertical-align:top; margin:0 0 0 20px; height:30px; padding:0 10px; font-size:14px; color:#000000; text-decoration:none; background:#F0F0F0; transition:color 0.2s, background 0.2s}
+.lk-events-item-info a+a {margin:0 0 0 10px}
+.lk-events-item-info a:hover {background:#000000; color:#FFFFFF}
+.lk-events-item-title {margin:10px 0 0 0; font-weight:500; font-size:22px; line-height:31px}
+.lk-events-item-title a {text-decoration:none}
+.lk-events-item-photos {margin:20px -10px 0 -10px}
 .lk-events-item-photos-inner {display:table; border-collapse:separate; border-spacing:10px 0}
-.lk-events-item-photos-item {display:table-cell; width:88px}
+.lk-events-item-photos-item {display:table-cell; width:78px}
 .lk-events-item-photos-item-inner {padding:100% 0 0 0; background:no-repeat center; background-size:cover}
-.lk-events-item-photos-item-more {display:table-cell; width:100px; background:#EEEEEE; position:relative; color:#ABABAB; font-weight:500; font-size:14px; line-height:18px; letter-spacing:0.05em; text-transform:uppercase}
+.lk-events-item-photos-item-more {display:none; width:100px; background:#EEEEEE; position:relative; color:#ABABAB; font-weight:500; font-size:14px; line-height:18px; letter-spacing:0.05em; text-transform:uppercase}
+.lk-events-item-photos-item-more.visible {display:table-cell}
 .lk-events-item-photos-item-more span {display:block; position:absolute; left:0; top:50%; right:0; text-align:center; transform:translateY(-50%)}
+.lk-events-item-photos-item-more strong {font-weight:500}
 
-.lk-event-add-title {margin:33px 0}
+.lk-event-add-title {margin:33px 0; font-size:50px; line-height:65px}
 .lk-event-add-form form {margin:0; padding:0}
 
 .tabs {margin:30px 0 0 0}
@@ -1090,3 +1111,21 @@ footer {margin:-60px 0 0 0; height:60px; border-top:1px solid #E7E7E7; backgroun
 .up-link:hover {background:#000000}
 .up-link svg {display:block; width:44px; height:44px; fill:#000000; transition:fill 0.2s}
 .up-link:hover svg {fill:#FFFFFF}
+
+.lk-forums-title {margin:50px 0 0 0; font-size:50px; line-height:65px}
+.lk-forums {margin:30px 0 0 0; border-bottom:1px solid #D6D6D6}
+.lk-forum {border-top:1px solid #D6D6D6}
+.lk-forum a {display:table; width:100%; text-decoration:none}
+.lk-forum-preview {display:table-cell; vertical-align:top; width:273px; padding:20px 0}
+.lk-forum-preview-inner {position:relative; overflow:hidden; width:273px}
+.lk-forum-preview-inner img {display:block; width:100%; transition:transform 0.5s}
+.lk-forum a:hover .lk-forum-preview-inner img {transform:scale(1.086)}
+.lk-forum-info {position:absolute; right:10px; bottom:10px; font-weight:500; font-size:14px; line-height:30px; letter-spacing:0.05em; color:#FFFFFF}
+.lk-forum-info-item {float:left; margin:0 0 0 10px; padding:0 10px; background:rgba(0, 0, 0, 0.8)}
+.lk-forum-info-item svg {display:inline-block; vertical-align:middle; width:24px; height:24px; fill:#FFFFFF; margin:-2px 4px 0 0}
+.lk-forum-content {display:table-cell; vertical-align:middle; padding:20px 0 20px 20px}
+.lk-forum-date {font-size:16px; line-height:22px; color:#717171}
+.lk-forum-title {margin:10px 0 0 0; font-weight:500; font-size:22px; line-height:33px}
+.lk-forum-anonce {margin:4px 0 0 0; font-size:16px; line-height:24px}
+.lk-forum-place {margin:10px 0 0 0; font-size:16px; line-height:24px; color:#717171}
+.lk-forum-place svg {display:inline-block; vertical-align:middle; width:18px; height:18px; margin:-2px 5px 0 0; fill:#717171}
