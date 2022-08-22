@@ -435,7 +435,7 @@ header {position:fixed; left:0; top:0; right:0; z-index:99; height:80px; backgro
 
 .filter-slider {position:absolute; left:0; top:82px; right:0}
 .filter-slider-range {position:relative; height:4px; background:#EEEEEE}
-.filter-slider-range-active {position:absolute; left:0; top:0; bottom:0; background:#DADADA}
+.filter-slider-range-active {position:absolute; left:0; top:0; bottom:0; background:#DADADA; max-width:100%}
 .filter-slider-range-inner {position:relative}
 .filter-slider-params {display:none}
 

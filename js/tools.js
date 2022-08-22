@@ -288,7 +288,7 @@ $(document).ready(function() {
             curStartTo = Number(curSlider.find('.filter-slider-to').val());
         }
         var curLimit = 0;
-        if (curSlider.find('.filter-slider-limit').length == 1) {
+        if (curSlider.find('.filter-slider-limit').length == 1 && (Number(curSlider.find('.filter-slider-max').html()) >= Number(curSlider.find('.filter-slider-limit').html()))) {
             curLimit = [0, Number(curSlider.find('.filter-slider-max').html()) - Number(curSlider.find('.filter-slider-limit').html())];
         }
         noUiSlider.create(curRange, {
@@ -312,7 +312,7 @@ $(document).ready(function() {
                 curSlider.find('.filter-slider-to').val(values[handle]);
             }
         });
-        curRange.noUiSlider.on('change', function(values, handle) {
+        curRange.noUiSlider.on('set', function(values, handle) {
             $('.filter-dates-mobile-item').removeClass('active from to');
             var fromIndex = Number($('.filter-slider-from').val()) - 1;
             var toIndex = Number($('.filter-slider-to').val());
