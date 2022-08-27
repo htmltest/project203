@@ -1,0 +1,25 @@
+<div class="window-photoedit">
+    <div class="window-title">Изменить данные фотографии</div>
+    <form action="ajax/photoedit.html" method="post" class="ajax-form">
+        <div class="window-photoedit-container">
+            <div class="window-photoedit-photo"><img src="files/photoedit.jpg" alt="" /></div>
+            <div class="form-input"><span>Название</span><input type="text" name="name" value="Панельная дискуссия" class="required" /></div>
+            <div class="window-photoedit-row">
+                <div class="window-photoedit-row-field">
+                    <div class="form-input"><span>место</span><input type="text" name="place" value="г. Москва, Российская Федерация" class="required" /></div>
+                </div>
+                <div class="window-photoedit-row-field">
+                    <div class="form-input form-input-date"><span>Дата съемки</span><input type="text" name="date" value="04.07.2019" class="required" /></div>
+                </div>
+                <div class="window-photoedit-row-field">
+                    <div class="form-input form-input-time"><span>Время съемки</span><input type="text" name="time" value="15:37" class="required" /></div>
+                </div>
+            </div>
+            <div class="form-input"><span>Автор</span><input type="text" name="author" value="" /></div>
+            <div class="form-input"><span>Источник</span><input type="text" name="source" value="Фотохост-агентство ТАСС" class="required" /></div>
+        </div>
+        <div class="window-bottom">
+            <button type="submit" class="btn"><svg><use xlink:href="images/sprite.svg#btn-save"></use></svg>Сохранить</button>
+        </div>
+    </form>
+</div>

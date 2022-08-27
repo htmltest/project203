@@ -8,6 +8,7 @@
         <link rel="stylesheet" href="js/slick/slick.css" />
         <link rel="stylesheet" href="js/mcustomscrollbar/jquery.mCustomScrollbar.css" />
         <link rel="stylesheet" href="js/nouislider/nouislider.css" />
+        <link rel="stylesheet" href="js/air-datepicker/datepicker.css" />
 
         <meta http-equiv="x-ua-compatible" content="ie=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -82,16 +83,16 @@
                                     <div class="filter-dates-month">Август</div>
                                     <div class="filter-slider">
                                         <input type="hidden" name="from" value="1" class="filter-slider-from" />
-                                        <input type="hidden" name="to" value="22" class="filter-slider-to" />
+                                        <input type="hidden" name="to" value="10" class="filter-slider-to" />
                                         <div class="filter-slider-range">
-                                            <div class="filter-slider-range-active" style="width:105%"></div>
+                                            <div class="filter-slider-range-active" style="width:45%"></div>
                                             <div class="filter-slider-range-inner"></div>
                                         </div>
                                         <div class="filter-slider-params">
                                             <div class="filter-slider-min">1</div>
                                             <div class="filter-slider-max">21</div>
                                             <div class="filter-slider-step">1</div>
-                                            <div class="filter-slider-limit">22</div>
+                                            <div class="filter-slider-limit">10</div>
                                         </div>
                                     </div>
                                     <div class="filter-dates-list">
@@ -104,18 +105,18 @@
                                         <div class="filter-dates-list-date" style="left:30%"><span>вс</span><strong>07</strong></div>
                                         <div class="filter-dates-list-date" style="left:35%"><span>пн</span></div>
                                         <div class="filter-dates-list-date" style="left:40%"><span>вт</span><strong>09</strong></div>
-                                        <div class="filter-dates-list-date" style="left:45%"><span>ср</span></div>
-                                        <div class="filter-dates-list-date" style="left:50%"><span>чт</span><strong>11</strong></div>
-                                        <div class="filter-dates-list-date" style="left:55%"><span>пт</span></div>
-                                        <div class="filter-dates-list-date" style="left:60%"><span>сб</span><strong>13</strong></div>
-                                        <div class="filter-dates-list-date" style="left:65%"><span>вс</span></div>
-                                        <div class="filter-dates-list-date" style="left:70%"><span>пн</span><strong>15</strong></div>
-                                        <div class="filter-dates-list-date" style="left:75%"><span>вт</span></div>
-                                        <div class="filter-dates-list-date" style="left:80%"><span>ср</span><strong>17</strong></div>
-                                        <div class="filter-dates-list-date" style="left:85%"><span>чт</span></div>
-                                        <div class="filter-dates-list-date" style="left:90%"><span>пт</span><strong>19</strong></div>
-                                        <div class="filter-dates-list-date" style="left:95%"><span>сб</span></div>
-                                        <div class="filter-dates-list-date" style="right:0"><span>вс</span><strong>21</strong></div>
+                                        <div class="filter-dates-list-date filter-dates-list-date-today" style="left:45%"><span>ср</span><em>Сегодня</em></div>
+                                        <div class="filter-dates-list-date filter-dates-list-date-future" style="left:50%"><span>чт</span><strong>11</strong></div>
+                                        <div class="filter-dates-list-date filter-dates-list-date-future" style="left:55%"><span>пт</span></div>
+                                        <div class="filter-dates-list-date filter-dates-list-date-future" style="left:60%"><span>сб</span><strong>13</strong></div>
+                                        <div class="filter-dates-list-date filter-dates-list-date-future" style="left:65%"><span>вс</span></div>
+                                        <div class="filter-dates-list-date filter-dates-list-date-future" style="left:70%"><span>пн</span><strong>15</strong></div>
+                                        <div class="filter-dates-list-date filter-dates-list-date-future" style="left:75%"><span>вт</span></div>
+                                        <div class="filter-dates-list-date filter-dates-list-date-future" style="left:80%"><span>ср</span><strong>17</strong></div>
+                                        <div class="filter-dates-list-date filter-dates-list-date-future" style="left:85%"><span>чт</span></div>
+                                        <div class="filter-dates-list-date filter-dates-list-date-future" style="left:90%"><span>пт</span><strong>19</strong></div>
+                                        <div class="filter-dates-list-date filter-dates-list-date-future" style="left:95%"><span>сб</span></div>
+                                        <div class="filter-dates-list-date filter-dates-list-date-future" style="right:0"><span>вс</span><strong>21</strong></div>
                                     </div>
                                 </div>
                                 <div class="filter-dates-current"><span data-placeholder="Все даты форума"></span><svg><use xlink:href="images/sprite.svg#filter-arrow"></use></svg></div>
@@ -130,17 +131,17 @@
                                     <div class="filter-dates-mobile-item">8 августа</div>
                                     <div class="filter-dates-mobile-item">9 августа</div>
                                     <div class="filter-dates-mobile-item">10 августа</div>
-                                    <div class="filter-dates-mobile-item">11 августа</div>
-                                    <div class="filter-dates-mobile-item">12 августа</div>
-                                    <div class="filter-dates-mobile-item">13 августа</div>
-                                    <div class="filter-dates-mobile-item">14 августа</div>
-                                    <div class="filter-dates-mobile-item">15 августа</div>
-                                    <div class="filter-dates-mobile-item">16 августа</div>
-                                    <div class="filter-dates-mobile-item">17 августа</div>
-                                    <div class="filter-dates-mobile-item">18 августа</div>
-                                    <div class="filter-dates-mobile-item">19 августа</div>
-                                    <div class="filter-dates-mobile-item">20 августа</div>
-                                    <div class="filter-dates-mobile-item">21 августа</div>
+                                    <div class="filter-dates-mobile-item disabled">11 августа</div>
+                                    <div class="filter-dates-mobile-item disabled">12 августа</div>
+                                    <div class="filter-dates-mobile-item disabled">13 августа</div>
+                                    <div class="filter-dates-mobile-item disabled">14 августа</div>
+                                    <div class="filter-dates-mobile-item disabled">15 августа</div>
+                                    <div class="filter-dates-mobile-item disabled">16 августа</div>
+                                    <div class="filter-dates-mobile-item disabled">17 августа</div>
+                                    <div class="filter-dates-mobile-item disabled">18 августа</div>
+                                    <div class="filter-dates-mobile-item disabled">19 августа</div>
+                                    <div class="filter-dates-mobile-item disabled">20 августа</div>
+                                    <div class="filter-dates-mobile-item disabled">21 августа</div>
                                 </div>
                             </div>
 
@@ -353,6 +354,8 @@
         <script src="js/fileupload/jquery.ui.widget.js"></script>
         <script src="js/fileupload/jquery.iframe-transport.js"></script>
         <script src="js/fileupload/jquery.fileupload.js"></script>
+        <script src="js/air-datepicker/datepicker.min.js"></script>
+        <script src="js/jquery.mask.min.js"></script>
         <script src="js/tools.js"></script>
 
     </body>

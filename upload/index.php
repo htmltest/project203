@@ -11,7 +11,7 @@
             }
 
             if (move_uploaded_file($value['tmp_name'][0], 'files/' . $value['name'][0])) {
-                echo '{"status":"success", "path":"' . $value['name'][0] . '", "ext":"' . $extension . '", "size":"' . $value['size'][0] / 1024 / 1024 . '"}';
+                echo '{"status":"success", "path":"' . $value['name'][0] . '", "url": "' . 'upload/files/' . $value['name'][0] . '", "urledit": "windows/photo-edit.html"}';
                 exit;
             }
         }

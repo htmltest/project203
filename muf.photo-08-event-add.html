@@ -8,6 +8,7 @@
         <link rel="stylesheet" href="js/slick/slick.css" />
         <link rel="stylesheet" href="js/mcustomscrollbar/jquery.mCustomScrollbar.css" />
         <link rel="stylesheet" href="js/nouislider/nouislider.css" />
+        <link rel="stylesheet" href="js/air-datepicker/datepicker.css" />
 
         <meta http-equiv="x-ua-compatible" content="ie=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -52,7 +53,7 @@
                     </div>
 
                     <h1 class="lk-event-add-title">Добавление мероприятия</h1>
-                    
+
                     <div class="lk-event-add-form">
                         <form action="#" method="post">
                             <div class="tabs">
@@ -60,44 +61,46 @@
 
                                 <div class="tabs-container">
                                     <div class="tabs-content active" data-title="Данные мероприятия">
-                                        <h6>Информация о мероприятии</h6>
+                                        <div class="lk-event-add-form-subtitle"><strong><span>Информация о мероприятии</span></strong></div>
 
-                                        <div class="form-label">Название</div>
-                                        <div class="form-input"><input type="text" name="name" value="" class="required" /></div>
+                                        <div class="form-input"><span>Название</span><input type="text" name="name" value="" class="required" /></div>
 
-                                        <div class="form-label">Дата съемки</div>
-                                        <div class="form-input"><input type="text" name="date" value="" class="required" /></div>
+                                        <div class="lk-event-add-form-row">
+                                            <div class="lk-event-add-form-row-field">
+                                                <div class="form-input form-input-date"><span>Дата съемки</span><input type="text" name="date" value="" class="required" /></div>
+                                            </div>
+                                            <div class="lk-event-add-form-row-field">
+                                                <div class="form-input form-input-time"><span>Время съемки</span><input type="text" name="time" value="" class="required" /></div>
+                                            </div>
+                                        </div>
 
-                                        <div class="form-label">Время съемки</div>
-                                        <div class="form-input"><input type="text" name="time" value="" class="required" /></div>
+                                        <div class="form-input"><span>Теги</span><input type="text" name="tags" value="" class="inputTags" /></div>
+                                        <input type="hidden" name="tags_list" value="" class="inputTagsValues" />
+                                        <div class="form-input-tags"></div>
 
-                                        <div class="form-label">Теги</div>
-                                        <div class="form-input"><input type="text" name="tags" value="" class="required" /></div>
+                                        <div class="lk-event-add-form-subtitle"><strong><span>Общие параметры фотографий</span></strong></div>
 
-                                        <h6>Общие параметры фотографий</h6>
+                                        <div class="form-input"><span>место</span><input type="text" name="place" value="" class="required" /></div>
 
-                                        <div class="form-label">место</div>
-                                        <div class="form-input"><input type="text" name="place" value="" class="required" /></div>
+                                        <div class="form-input"><span>Автор</span><input type="text" name="author" value="" class="required" /></div>
 
-                                        <div class="form-label">Автор</div>
-                                        <div class="form-input"><input type="text" name="author" value="" class="required" /></div>
+                                        <div class="form-input"><span>Источник</span><input type="text" name="source" value="" class="required" /></div>
 
-                                        <div class="form-label">Источник</div>
-                                        <div class="form-input"><input type="text" name="source" value="" class="required" /></div>
+                                        <div class="form-submit"><button type="submit" class="btn"><svg><use xlink:href="images/sprite.svg#btn-save"></use></svg>Сохранить</button></div>
                                     </div>
 
                                     <div class="tabs-content" data-title="Фотографии">
                                         <div class="form-label">Загрузка файлов</div>
                                         <div class="form-files">
-                                            <div class="form-files-dropzone"><span>Перетащите сюда файлы<br /> или кликните для выбора</span></div>
+                                            <div class="form-files-dropzone"><span><svg><use xlink:href="images/sprite.svg#files-add"></use></svg>Перетащите сюда файлы или кликните для выбора</span></div>
                                             <div class="form-files-input"><input type="file" name="files[]" multiple="multiple" data-uploadurl="upload/" data-uploadfiles="upload/files/" data-removeurl="upload/remove.php" /><span class="btn">Добавить файл</span></div>
                                             <div class="form-files-list"></div>
                                         </div>
+
+                                        <div class="form-submit"><button type="submit" class="btn"><svg><use xlink:href="images/sprite.svg#btn-save"></use></svg>Сохранить</button></div>
                                     </div>
                                 </div>
                             </div>
-                            
-                            <div class="form-submit"><button type="submit" class="btn">Сохранить</button></div>
                         </form>
                     </div>
 
@@ -134,6 +137,8 @@
         <script src="js/fileupload/jquery.ui.widget.js"></script>
         <script src="js/fileupload/jquery.iframe-transport.js"></script>
         <script src="js/fileupload/jquery.fileupload.js"></script>
+        <script src="js/air-datepicker/datepicker.min.js"></script>
+        <script src="js/jquery.mask.min.js"></script>
         <script src="js/tools.js"></script>
 
     </body>

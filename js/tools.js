@@ -376,6 +376,7 @@ $(document).ready(function() {
             $('.paging .pager a.active').removeClass('active');
             curLink.addClass('active');
             updateEvents();
+            $('html, body').animate({'scrollTop': $('.filter').offset().top - $('header').outerHeight()});
         }
         e.preventDefault();
     });
@@ -451,6 +452,10 @@ $(document).ready(function() {
     });
 
     $('body').on('click', '.window-link', function(e) {
+        if ($(this).hasClass('form-files-list-item-edit')) {
+            $('.form-files-list-item-edit.editable').removeClass('editable');
+            $(this).addClass('editable');
+        }
         windowOpen($(this).attr('href'));
         e.preventDefault();
     });
@@ -527,8 +532,73 @@ $(document).ready(function() {
         e.preventDefault();
     });
 
+    $.validator.addMethod('inputDate',
+        function(curDate, element) {
+            if (this.optional(element) && curDate == '') {
+                return true;
+            } else {
+                if (curDate.match(/^[0-9]{2}\.[0-9]{2}\.[0-9]{4}$/)) {
+                    return true;
+                } else {
+                    $.validator.messages['inputDate'] = 'Дата введена некорректно';
+                    return false;
+                }
+            }
+        },
+        ''
+    );
+
+    $.validator.addMethod('inputTime',
+        function(curTime, element) {
+            if (this.optional(element) && curTime == '') {
+                return true;
+            } else {
+                if (curTime.match(/^[0-9]{2}\:[0-9]{2}$/)) {
+                    return true;
+                } else {
+                    $.validator.messages['inputTime'] = 'Время введено некорректно';
+                    return false;
+                }
+            }
+        },
+        ''
+    );
+
+    $('body').on('focus', '.form-input input, .form-input textarea', function() {
+        $(this).parent().addClass('focus');
+    });
+
+    $('body').on('blur', '.form-input input, .form-input textarea', function() {
+        $(this).parent().removeClass('focus');
+        if ($(this).val() != '') {
+            $(this).parent().addClass('full');
+        } else {
+            $(this).parent().removeClass('full');
+        }
+    });
+
+    $('body').on('input', '.form-input textarea', function() {
+        this.style.height = (this.scrollHeight) + 'px';
+    });
+
+	$('body').on('click', '.form-input-clear', function(e) {
+		$(this).parent().find('input').val('').trigger('change').trigger('blur');
+		e.preventDefault();
+	});
+
     $('form').each(function() {
         initForm($(this));
+    });
+
+    $('body').on('click', '.view-password', function(e) {
+        var curField = $(this).parent();
+        curField.toggleClass('viewed');
+        if (curField.hasClass('viewed')) {
+            curField.find('input').attr('type', 'text');
+        } else {
+            curField.find('input').attr('type', 'password');
+        }
+        e.preventDefault();
     });
 
     $('body').on('click', '.btn-print', function(e) {
@@ -567,6 +637,64 @@ $(document).ready(function() {
 
     $('.up-link').click(function(e) {
         $('html, body').animate({'scrollTop': 0});
+        e.preventDefault();
+    });
+
+    $('.lk-events-header .btn-filter').click(function(e) {
+        $('html').toggleClass('lk-events-filter-open');
+        e.preventDefault();
+    });
+
+    $(document).click(function(e) {
+        if (
+            $(e.target).parents().filter('.lk-events-header-ctrl').length == 0 &&
+            $(e.target).parents().filter('.datepicker--cell').length == 0 && !$(e.target).hasClass('datepicker--cell') &&
+            $(e.target).parents().filter('.datepicker--cells').length == 0 && !$(e.target).hasClass('datepicker--cells') &&
+            $(e.target).parents().filter('.datepicker--day-name').length == 0 && !$(e.target).hasClass('datepicker--day-name') &&
+            $(e.target).parents().filter('.datepicker--days-names').length == 0 && !$(e.target).hasClass('datepicker--days-names') &&
+            $(e.target).parents().filter('.datepicker--days').length == 0 && !$(e.target).hasClass('datepicker--days') &&
+            $(e.target).parents().filter('.datepicker--content').length == 0 && !$(e.target).hasClass('datepicker--content') &&
+            $(e.target).parents().filter('.datepicker--nav-action').length == 0 && !$(e.target).hasClass('datepicker--nav-action') &&
+            $(e.target).parents().filter('.datepicker--nav-title').length == 0 && !$(e.target).hasClass('datepicker--nav-title') &&
+            $(e.target).parents().filter('.datepicker--nav').length == 0 && !$(e.target).hasClass('datepicker--nav') &&
+            $(e.target).parents().filter('.datepicker--pointer').length == 0 && !$(e.target).hasClass('datepicker--pointer') &&
+            $(e.target).parents().filter('.datepicker').length == 0 && !$(e.target).hasClass('datepicker')
+        ) {
+            $('html').removeClass('lk-events-filter-open');
+        }
+    });
+
+    $('.lk-events-header-filter-tags-current').click(function(e) {
+        $(this).parent().toggleClass('open');
+        e.preventDefault();
+    });
+
+    $(document).click(function(e) {
+        if ($(e.target).parents().filter('.lk-events-header-filter-tags').length == 0) {
+            $('.lk-events-header-filter-tags').removeClass('open');
+        }
+    });
+
+    $('.lk-events-header-filter-tags-list input').change(function() {
+        var newHTML = '';
+        $('.lk-events-header-filter-tags-list input:checked').each(function() {
+            newHTML += '<div class="lk-events-header-filter-tags-selected-item">#' + $(this).parent().find('span').html() + '</div>';
+        });
+        $('.lk-events-header-filter-tags-selected').html(newHTML);
+    });
+
+    $('.lk-events-header-filter-tags-list').each(function() {
+        var newHTML = '';
+        $('.lk-events-header-filter-tags-list input:checked').each(function() {
+            newHTML += '<div class="lk-events-header-filter-tags-selected-item">#' + $(this).parent().find('span').html() + '</div>';
+        });
+        $('.lk-events-header-filter-tags-selected').html(newHTML);
+    });
+
+    $('.lk-events-header-filter-reset button').click(function(e) {
+        $('.form-input input').val('');
+        $('.lk-events-header-filter-tags-list input').prop('checked', false);
+        $('.lk-events-header-filter-tags-selected').html('');
         e.preventDefault();
     });
 
@@ -640,6 +768,18 @@ $(window).on('load resize', function() {
         });
     });
 
+    $('.lk-events-item-photos').each(function() {
+        var curBlock = $(this);
+        var countAll = Number(curBlock.find('.lk-events-item-photos-item-more').attr('data-count'));
+        var countCurrent = curBlock.find('.lk-events-item-photos-item:visible').length;
+        if (countAll > countCurrent) {
+            curBlock.find('.lk-events-item-photos-item-more').addClass('visible');
+            curBlock.find('.lk-events-item-photos-item-more strong').html(countAll - countCurrent);
+        } else {
+            curBlock.find('.lk-events-item-photos-item-more').removeClass('visible');
+        }
+    });
+
 });
 
 function windowOpen(linkWindow, dataWindow) {
@@ -698,6 +838,20 @@ function windowClose() {
 }
 
 function initForm(curForm) {
+    curForm.find('.form-input input, .form-input textarea').each(function() {
+        if ($(this).val() != '') {
+            $(this).parent().addClass('full');
+        }
+    });
+
+    curForm.find('.form-input input:focus, .form-input textarea:focus').each(function() {
+        $(this).trigger('focus');
+    });
+
+    curForm.find('.form-input textarea').each(function() {
+        $(this).css({'height': this.scrollHeight, 'overflow-y': 'hidden'});
+    });
+
     curForm.find('.form-files').each(function() {
         var curFiles = $(this);
         var curInput = curFiles.find('.form-files-input input');
@@ -718,13 +872,164 @@ function initForm(curForm) {
             done: function (e, data) {
                 curFiles.find('.form-files-list-item-progress').eq(0).remove();
                 if (data.result.status == 'success') {
-                    curFiles.find('.form-files-list').append('<div class="form-files-list-item"><div class="form-files-list-item-icon"><svg><use xlink:href="' + pathTemplate + 'images/sprite.svg#file-icon-2"></use></svg><span>' + data.result.ext + '</span></div><div class="form-files-list-item-name">' + data.result.path + '</div><div class="form-files-list-item-size">' + Number(data.result.size).toFixed(2) + ' Мб</div><a href="' + removeURL + '?file=' + data.result.path + '" class="form-files-list-item-remove"><svg><use xlink:href="' + pathTemplate + 'images/sprite.svg#file-remove"></use></svg></a></div>');
+                    curFiles.find('.form-files-list').append('<div class="form-files-list-item" style="background-image:url(\'' + data.result.url + '\')"><a href="' + removeURL + '?file=' + data.result.path + '" class="form-files-list-item-remove"><svg><use xlink:href="' + pathTemplate + 'images/sprite.svg#file-remove"></use></svg></a><a href="' + data.result.urledit + '" class="form-files-list-item-edit window-link"><svg><use xlink:href="' + pathTemplate + 'images/sprite.svg#file-edit"></use></svg></a></div>');
                 } else {
-                    curFiles.find('.form-files-list').append('<div class="form-files-list-item error"><div class="form-files-list-item-icon"><svg><use xlink:href="' + pathTemplate + 'images/sprite.svg#file-icon-2"></use></svg></div><div class="form-files-list-item-name">' + data.result.text + '</div><a href="' + removeURL + '?file=' + data.result.path + '" class="form-files-list-item-remove"><svg><use xlink:href="' + pathTemplate + 'images/sprite.svg#file-remove"></use></svg></a></div>');
+                    curFiles.find('.form-files-list').append('<div class="form-files-list-item error"><div class="form-files-list-item-name">' + data.result.text + '</div><a href="' + removeURL + '?file=' + data.result.path + '" class="form-files-list-item-remove"><svg><use xlink:href="' + pathTemplate + 'images/sprite.svg#file-remove"></use></svg></a></div>');
                 }
                 curFiles.addClass('full');
             }
         });
+    });
+
+    curForm.find('.form-input-date input').mask('00.00.0000');
+    curForm.find('.form-input-date input').attr('autocomplete', 'off');
+    curForm.find('.form-input-date input').addClass('inputDate');
+
+    curForm.find('.form-input-date input').on('keyup', function() {
+        var curValue = $(this).val();
+        if (curValue.match(/^[0-9]{2}\.[0-9]{2}\.[0-9]{4}$/)) {
+            var isCorrectDate = true;
+            var userDate = new Date(curValue.substr(6, 4), Number(curValue.substr(3, 2)) - 1, Number(curValue.substr(0, 2)));
+            if ($(this).attr('min')) {
+                var minDateStr = $(this).attr('min');
+                var minDate = new Date(minDateStr.substr(6, 4), Number(minDateStr.substr(3, 2)) - 1, Number(minDateStr.substr(0, 2)));
+                if (userDate < minDate) {
+                    isCorrectDate = false;
+                }
+            }
+            if ($(this).attr('max')) {
+                var maxDateStr = $(this).attr('max');
+                var maxDate = new Date(maxDateStr.substr(6, 4), Number(maxDateStr.substr(3, 2)) - 1, Number(maxDateStr.substr(0, 2)));
+                if (userDate > maxDate) {
+                    isCorrectDate = false;
+                }
+            }
+            if (isCorrectDate) {
+                var myDatepicker = $(this).data('datepicker');
+                if (myDatepicker) {
+                    var curValueArray = curValue.split('.');
+                    myDatepicker.selectDate(new Date(Number(curValueArray[2]), Number(curValueArray[1]) - 1, Number(curValueArray[0])));
+                    myDatepicker.show();
+                    $(this).focus();
+                }
+            } else {
+                $(this).addClass('error');
+                return false;
+            }
+        }
+    });
+
+    curForm.find('.form-input-date input').each(function() {
+        var minDateText = $(this).attr('min');
+        var minDate = null;
+        if (typeof (minDateText) != 'undefined') {
+            var minDateArray = minDateText.split('.');
+            minDate = new Date(Number(minDateArray[2]), Number(minDateArray[1]) - 1, Number(minDateArray[0]));
+        }
+        var maxDateText = $(this).attr('max');
+        var maxDate = null;
+        if (typeof (maxDateText) != 'undefined') {
+            var maxDateArray = maxDateText.split('.');
+            maxDate = new Date(Number(maxDateArray[2]), Number(maxDateArray[1]) - 1, Number(maxDateArray[0]));
+        }
+        if ($(this).hasClass('maxDate1Year')) {
+            var curDate = new Date();
+            curDate.setFullYear(curDate.getFullYear() + 1);
+            curDate.setDate(curDate.getDate() - 1);
+            maxDate = curDate;
+            var maxDay = curDate.getDate();
+            if (maxDay < 10) {
+                maxDay = '0' + maxDay
+            }
+            var maxMonth = curDate.getMonth() + 1;
+            if (maxMonth < 10) {
+                maxMonth = '0' + maxMonth
+            }
+            $(this).attr('max', maxDay + '.' + maxMonth + '.' + curDate.getFullYear());
+        }
+        var startDate = new Date();
+        if (typeof ($(this).attr('value')) != 'undefined') {
+            var curValue = $(this).val();
+            if (curValue != '') {
+                var startDateArray = curValue.split('.');
+                startDate = new Date(Number(startDateArray[2]), Number(startDateArray[1]) - 1 , Number(startDateArray[0]));
+            }
+        }
+        $(this).datepicker({
+            language: 'ru',
+            prevHtml: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.7049 7.41L14.2949 6L8.29492 12L14.2949 18L15.7049 16.59L11.1249 12L15.7049 7.41Z" /></svg>',
+            nextHtml: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.70492 6L8.29492 7.41L12.8749 12L8.29492 16.59L9.70492 18L15.7049 12L9.70492 6Z" /></svg>',
+            minDate: minDate,
+            maxDate: maxDate,
+            startDate: startDate,
+            toggleSelected: false,
+            autoClose: true
+        });
+        if (typeof ($(this).attr('value')) != 'undefined') {
+            var curValue = $(this).val();
+            if (curValue != '') {
+                var startDateArray = curValue.split('.');
+                startDate = new Date(Number(startDateArray[2]), Number(startDateArray[1]) - 1 , Number(startDateArray[0]));
+                $(this).data('datepicker').selectDate(startDate);
+            }
+        }
+    });
+
+    curForm.find('.form-input-time input').mask('00:00');
+    curForm.find('.form-input-time input').attr('autocomplete', 'off');
+    curForm.find('.form-input-time input').addClass('inputTime');
+
+    curForm.find('.inputTags').attr('autocomplete', 'off');
+    curForm.find('.inputTags').each(function() {
+        updateTags();
+    });
+
+    curForm.find('.inputTags').on('keydown', function(e) {
+        if (e.keyCode == 13) {
+            var curValue = $(this).val();
+            var curTags = curForm.find('.inputTagsValues').val();
+            var newTagsArray = curValue.split(',');
+            for (var i = 0; i < newTagsArray.length; i++) {
+                var curTag = newTagsArray[i].trim();
+                if (curTag != '') {
+                    if (curTags != '') {
+                        curTags += ',';
+                    }
+                    curTags += curTag;
+                }
+            }
+            curForm.find('.inputTagsValues').val(curTags);
+            updateTags();
+            $(this).val('');
+            return false;
+        }
+    });
+
+    function updateTags() {
+        curForm.find('.inputTagsValues').each(function() {
+            var curValue = $(this).val();
+            var carTagsArray = curValue.split(',');
+            var newHTML = '';
+            for (var i = 0; i < carTagsArray.length; i++) {
+                if (carTagsArray[i] != '') {
+                    newHTML += '<div class="form-input-tags-item">#' + carTagsArray[i] + '<a href="#"><svg><use xlink:href="' + pathTemplate + 'images/sprite.svg#form-input-tags-remore"></use></svg></a></div>';
+                }
+            }
+            $('.form-input-tags').html(newHTML);
+        });
+    }
+
+    $('body').on('click', '.form-input-tags-item a', function(e) {
+        var curItem = $(this).parent();
+        var curIndex = curForm.find('.form-input-tags-item').index(curItem);
+        curForm.find('.inputTagsValues').each(function() {
+            var curValue = $(this).val();
+            var carTagsArray = curValue.split(',');
+            carTagsArray.splice(curIndex, 1);
+            $(this).val(carTagsArray.join(','));
+            updateTags();
+        });
+        e.preventDefault();
     });
 
     curForm.validate({
@@ -786,11 +1091,20 @@ function initForm(curForm) {
                         cache: false
                     }).done(function(data) {
                         curForm.find('.message').remove();
-                        if (data.status) {
-                            curForm.append('<div class="message message-success"><div class="message-title">' + data.title + '</div><div class="message-text">' + data.message + '</div></div>');
-
+                        if (curForm.parent().hasClass('window-photoedit')) {
+                            if (data.status) {
+                                $('.form-files-list-item-edit.editable').addClass('edited');
+                                $('.form-files-list-item-edit.editable').removeClass('editable');
+                                windowClose();
+                            } else {
+                                curForm.append('<div class="message message-error"><div class="message-title">' + data.title + '</div><div class="message-text">' + data.message + '</div></div>');
+                            }
                         } else {
-                            curForm.append('<div class="message message-error"><div class="message-title">' + data.title + '</div><div class="message-text">' + data.message + '</div></div>');
+                            if (data.status) {
+                                curForm.append('<div class="message message-success"><div class="message-title">' + data.title + '</div><div class="message-text">' + data.message + '</div></div>');
+                            } else {
+                                curForm.append('<div class="message message-error"><div class="message-title">' + data.title + '</div><div class="message-text">' + data.message + '</div></div>');
+                            }
                         }
                         curForm.removeClass('loading');
                     });
