@@ -71,6 +71,24 @@ $(document).ready(function() {
         }
         e.preventDefault();
     });
+    
+    $('.event-ctrl-views').each(function() {
+        if ($(window).width() < 1200) {
+            if ($('.event-ctrl-views a.active').attr('data-viewclass') == 'event-photos-view-3' || $('.event-ctrl-views a.active').attr('data-viewclass') == 'event-photos-view-4') {
+                $('.event-ctrl-views a.active').removeClass('active');
+                $('.event-ctrl-views a').eq(0).addClass('active');
+            }
+        }
+    });
+
+    $('.event-ctrl-views a.active').each(function(e) {
+        var curLink = $(this);
+        $('.event-photos').removeClass($('.event-ctrl-views a.active').attr('data-viewclass'));
+        $('.event-ctrl-views a.active').removeClass('active');
+        curLink.addClass('active');
+        $('.event-photos').addClass(curLink.attr('data-viewclass'));
+        $grid.masonry('layout');
+    });
 
     $('.event-photos img').one('load', function() {
          $grid.masonry('layout');

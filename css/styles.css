@@ -754,7 +754,7 @@ header {position:fixed; left:0; top:0; right:0; z-index:99; height:80px; backgro
 @media screen and (max-width:1199px) {
     .event-photos.event-photos-view-2 .event-photos-item {width:100%}
     .event-photos.event-photos-view-2 .event-photos-item-img {width:210px; height:183px}
-    .event-photos.event-photos-view-2 .event-photos-item-info {width:calc(100% - 210px)}
+    .event-photos.event-photos-view-2 .event-photos-item-info {display:block; width:calc(100% - 210px)}
 }
 
 @media screen and (max-width:479px) {
