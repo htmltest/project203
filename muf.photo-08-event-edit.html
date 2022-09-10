@@ -53,7 +53,7 @@
                         <a href="#" class="event-header-back"><svg><use xlink:href="images/sprite.svg#icon-back"></use></svg>к списку мероприятий</a>
                     </div>
 
-                    <h1 class="lk-event-add-title">Добавление мероприятия</h1>
+                    <h1 class="lk-event-add-title">Редактирование мероприятия</h1>
 
                     <div class="lk-event-add-form">
                         <form action="#" method="post">
@@ -63,23 +63,30 @@
                                 <div class="tabs-container">
                                     <div class="tabs-content active" data-title="Данные мероприятия">
                                         <div class="lk-event-add-form-subtitle"><strong><span>Информация о мероприятии</span></strong></div>
+                                        
+                                        <div class="lk-event-edit-status">
+                                            <div class="lk-event-edit-status-activity">
+                                                <div class="form-checkbox"><label><input type="checkbox" name="activity" checked="checked" /><span>Активен</span></label></div>
+                                            </div>
+                                            <div class="lk-event-edit-status-id">ID мероприятия: 8875</div>
+                                        </div>
 
-                                        <div class="form-input"><span>Название</span><input type="text" name="name" value="" class="required" /></div>
+                                        <div class="form-input"><span>Название</span><input type="text" name="name" value="Панельная дискуссия" class="required" /></div>
 
                                         <div class="lk-event-add-form-row">
                                             <div class="lk-event-add-form-row-field">
-                                                <div class="form-input form-input-date"><span>Дата съемки</span><input type="text" name="date" value="" class="required" /></div>
+                                                <div class="form-input form-input-date"><span>Дата съемки</span><input type="text" name="date" value="04.07.2019" class="required" /></div>
                                             </div>
                                             <div class="lk-event-add-form-row-field">
-                                                <div class="form-input form-input-time"><span>Время съемки</span><input type="text" name="time" value="" class="required" /></div>
+                                                <div class="form-input form-input-time"><span>Время съемки</span><input type="text" name="time" value="15:37" class="required" /></div>
                                             </div>
                                         </div>
 
                                         <div class="form-select">
                                             <select name="tags" data-placeholder="Теги" multiple="multiple">
                                                 <option value=""></option>
-                                                <option value="1">круглый стол</option>
-                                                <option value="2">Доронов И.</option>
+                                                <option value="1" selected="selected">круглый стол</option>
+                                                <option value="2" selected="selected">Доронов И.</option>
                                                 <option value="3">Тег 3</option>
                                                 <option value="4">тег 4</option>
                                                 <option value="5">тег 5</option>
@@ -112,11 +119,11 @@
 
                                         <div class="lk-event-add-form-subtitle"><strong><span>Общие параметры фотографий</span></strong></div>
 
-                                        <div class="form-input"><span>место</span><input type="text" name="place" value="" class="required" /></div>
+                                        <div class="form-input"><span>место</span><input type="text" name="place" value="Москва" class="required" /></div>
 
                                         <div class="form-input"><span>Автор</span><input type="text" name="author" value="" class="required" /></div>
 
-                                        <div class="form-input"><span>Источник</span><input type="text" name="source" value="" class="required" /></div>
+                                        <div class="form-input"><span>Источник</span><input type="text" name="source" value="Фотохост-агентство ТАСС" class="required" /></div>
 
                                         <div class="form-submit"><button type="submit" class="btn"><svg><use xlink:href="images/sprite.svg#btn-save"></use></svg>Сохранить</button></div>
                                     </div>
@@ -126,14 +133,51 @@
                                         <div class="form-files form-files-cover">
                                             <div class="form-files-dropzone"><span><svg><use xlink:href="images/sprite.svg#files-add"></use></svg>Перетащите сюда файл или кликните для выбора</span></div>
                                             <div class="form-files-input"><input type="file" name="files[]" data-uploadurl="upload/" data-uploadfiles="upload/files/" data-removeurl="upload/remove.php" /><span class="btn">Добавить файл</span></div>
-                                            <div class="form-files-list"></div>
+                                            <div class="form-files-list">
+                                                <div class="form-files-list-item" style="background-image:url('files/lk-events-item-cover-1.jpg')" data-id="ID_PHOTO_1">
+                                                    <div class="form-files-list-item-move"></div>
+                                                    <a href="upload/remove.php?file=lk-events-item-cover-1.jpg" class="form-files-list-item-remove"><svg><use xlink:href="images/sprite.svg#file-remove-cover"></use></svg></a>
+                                                    <a href="windows/photo-edit.html" class="form-files-list-item-edit window-link"><svg><use xlink:href="images/sprite.svg#file-edit"></use></svg></a>
+                                                </div>
+                                            </div>
                                         </div>
 
                                         <div class="form-label">Загрузка файлов</div>
                                         <div class="form-files">
                                             <div class="form-files-dropzone"><span><svg><use xlink:href="images/sprite.svg#files-add"></use></svg>Перетащите сюда файлы или кликните для выбора</span></div>
                                             <div class="form-files-input"><input type="file" name="files[]" multiple="multiple" data-uploadurl="upload/" data-uploadfiles="upload/files/" data-removeurl="upload/remove.php" /><span class="btn">Добавить файл</span></div>
-                                            <div class="form-files-list"></div>
+                                            <div class="form-files-list">
+                                                <div class="form-files-list-item" style="background-image:url('files/lk-events-item-photos-1.jpg')" data-id="ID_PHOTO_1">
+                                                    <div class="form-files-list-item-move"></div>
+                                                    <a href="upload/remove.php?file=lk-events-item-photos-1.jpg" class="form-files-list-item-remove"><svg><use xlink:href="images/sprite.svg#file-remove"></use></svg></a>
+                                                    <a href="windows/photo-edit.html" class="form-files-list-item-edit window-link"><svg><use xlink:href="images/sprite.svg#file-edit"></use></svg></a>
+                                                </div>
+                                                <div class="form-files-list-item" style="background-image:url('files/lk-events-item-photos-2.jpg')" data-id="ID_PHOTO_2">
+                                                    <div class="form-files-list-item-move"></div>
+                                                    <a href="upload/remove.php?file=lk-events-item-photos-2.jpg" class="form-files-list-item-remove"><svg><use xlink:href="images/sprite.svg#file-remove"></use></svg></a>
+                                                    <a href="windows/photo-edit.html" class="form-files-list-item-edit window-link"><svg><use xlink:href="images/sprite.svg#file-edit"></use></svg></a>
+                                                </div>
+                                                <div class="form-files-list-item" style="background-image:url('files/lk-events-item-photos-3.jpg')" data-id="ID_PHOTO_3">
+                                                    <div class="form-files-list-item-move"></div>
+                                                    <a href="upload/remove.php?file=lk-events-item-photos-3.jpg" class="form-files-list-item-remove"><svg><use xlink:href="images/sprite.svg#file-remove"></use></svg></a>
+                                                    <a href="windows/photo-edit.html" class="form-files-list-item-edit window-link"><svg><use xlink:href="images/sprite.svg#file-edit"></use></svg></a>
+                                                </div>
+                                                <div class="form-files-list-item" style="background-image:url('files/lk-events-item-photos-4.jpg')" data-id="ID_PHOTO_4">
+                                                    <div class="form-files-list-item-move"></div>
+                                                    <a href="upload/remove.php?file=lk-events-item-photos-4.jpg" class="form-files-list-item-remove"><svg><use xlink:href="images/sprite.svg#file-remove"></use></svg></a>
+                                                    <a href="windows/photo-edit.html" class="form-files-list-item-edit window-link"><svg><use xlink:href="images/sprite.svg#file-edit"></use></svg></a>
+                                                </div>
+                                                <div class="form-files-list-item" style="background-image:url('files/lk-events-item-photos-5.jpg')" data-id="ID_PHOTO_5">
+                                                    <div class="form-files-list-item-move"></div>
+                                                    <a href="upload/remove.php?file=lk-events-item-photos-5.jpg" class="form-files-list-item-remove"><svg><use xlink:href="images/sprite.svg#file-remove"></use></svg></a>
+                                                    <a href="windows/photo-edit.html" class="form-files-list-item-edit window-link"><svg><use xlink:href="images/sprite.svg#file-edit"></use></svg></a>
+                                                </div>
+                                                <div class="form-files-list-item" style="background-image:url('files/lk-events-item-photos-6.jpg')" data-id="ID_PHOTO_6">
+                                                    <div class="form-files-list-item-move"></div>
+                                                    <a href="upload/remove.php?file=lk-events-item-photos-6.jpg" class="form-files-list-item-remove"><svg><use xlink:href="images/sprite.svg#file-remove"></use></svg></a>
+                                                    <a href="windows/photo-edit.html" class="form-files-list-item-edit window-link"><svg><use xlink:href="images/sprite.svg#file-edit"></use></svg></a>
+                                                </div>
+                                            </div>
                                             <input type="hidden" name="form_files_sort" value="" class="form-files-sort" />
                                         </div>
 
