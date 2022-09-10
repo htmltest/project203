@@ -71,7 +71,7 @@ $(document).ready(function() {
         }
         e.preventDefault();
     });
-    
+
     $('.event-ctrl-views').each(function() {
         if ($(window).width() < 1200) {
             if ($('.event-ctrl-views a.active').attr('data-viewclass') == 'event-photos-view-3' || $('.event-ctrl-views a.active').attr('data-viewclass') == 'event-photos-view-4') {
@@ -508,6 +508,7 @@ $(document).ready(function() {
             if (curFiles.find('.form-files-list-item-progress, .form-files-list-item').length == 0) {
                 curFiles.removeClass('full');
             }
+            formFilesSort(curFiles);
         });
         e.preventDefault();
     });
@@ -519,6 +520,7 @@ $(document).ready(function() {
         if (curFiles.find('.form-files-list-item-progress, .form-files-list-item').length == 0) {
             curFiles.removeClass('full');
         }
+        formFilesSort(curFiles);
         e.preventDefault();
     });
 
@@ -716,6 +718,16 @@ $(document).ready(function() {
         e.preventDefault();
     });
 
+    $('.form-files').each(function() {
+        var curFiles = $(this);
+        curFiles.find('.form-files-list').sortable({
+            handle: '.form-files-list-item-move',
+            stop: function(event, ui) {
+                formFilesSort(curFiles);
+            }
+        });
+    });
+
 });
 
 function updateEvents() {
@@ -786,18 +798,6 @@ $(window).on('load resize', function() {
         });
     });
 
-    $('.lk-events-item-photos').each(function() {
-        var curBlock = $(this);
-        var countAll = Number(curBlock.find('.lk-events-item-photos-item-more').attr('data-count'));
-        var countCurrent = curBlock.find('.lk-events-item-photos-item:visible').length;
-        if (countAll > countCurrent) {
-            curBlock.find('.lk-events-item-photos-item-more').addClass('visible');
-            curBlock.find('.lk-events-item-photos-item-more strong').html(countAll - countCurrent);
-        } else {
-            curBlock.find('.lk-events-item-photos-item-more').removeClass('visible');
-        }
-    });
-
 });
 
 function windowOpen(linkWindow, dataWindow) {
@@ -855,6 +855,15 @@ function windowClose() {
     }
 }
 
+function formFilesSort(curFiles) {
+    var results = [];
+    for (var i = 0; i < curFiles.find('.form-files-list-item').length; i++) {
+        var curItem = curFiles.find('.form-files-list-item').eq(i);
+        results.push(curItem.attr('data-id'));
+    }
+    curFiles.find('.form-files-sort').val(JSON.stringify(results));
+}
+
 function initForm(curForm) {
     curForm.find('.form-input input, .form-input textarea').each(function() {
         if ($(this).val() != '') {
@@ -874,6 +883,11 @@ function initForm(curForm) {
         var curFiles = $(this);
         var curInput = curFiles.find('.form-files-input input');
 
+        if (curFiles.find('.form-files-list .form-files-list-item').length > 0) {
+            curFiles.addClass('full');
+            formFilesSort(curFiles);
+        }
+
         var uploadURL = curInput.attr('data-uploadurl');
         var uploadFiles = curInput.attr('data-uploadfiles');
         var removeURL = curInput.attr('data-removeurl');
@@ -883,18 +897,24 @@ function initForm(curForm) {
             dropZone: curFiles.find('.form-files-dropzone'),
             pasteZone: curFiles.find('.form-files-dropzone'),
             add: function(e, data) {
-                curFiles.find('.form-files-list').append('<div class="form-files-list-item-progress"><span class="form-files-list-item-cancel"><svg><use xlink:href="' + pathTemplate + 'images/sprite.svg#file-remove"></use></svg></span></div>');
+                curFiles.find('.form-files-list').append('<div class="form-files-list-item-progress" data-id=""><div class="form-files-list-item-move"></div><span class="form-files-list-item-cancel"><svg><use xlink:href="' + pathTemplate + 'images/sprite.svg#file-remove"></use></svg></span></div>');
                 data.submit();
                 curFiles.addClass('full');
+                formFilesSort(curFiles);
             },
             done: function (e, data) {
                 curFiles.find('.form-files-list-item-progress').eq(0).remove();
                 if (data.result.status == 'success') {
-                    curFiles.find('.form-files-list').append('<div class="form-files-list-item" style="background-image:url(\'' + data.result.url + '\')"><a href="' + removeURL + '?file=' + data.result.path + '" class="form-files-list-item-remove"><svg><use xlink:href="' + pathTemplate + 'images/sprite.svg#file-remove"></use></svg></a><a href="' + data.result.urledit + '" class="form-files-list-item-edit window-link"><svg><use xlink:href="' + pathTemplate + 'images/sprite.svg#file-edit"></use></svg></a></div>');
+                    var svgID = '#file-remove';
+                    if (curFiles.hasClass('form-files-cover')) {
+                        svgID = '#file-remove-cover';
+                    }
+                    curFiles.find('.form-files-list').append('<div class="form-files-list-item" data-id="' + data.result.id + '" style="background-image:url(\'' + data.result.url + '\')"><div class="form-files-list-item-move"></div><a href="' + removeURL + '?file=' + data.result.path + '" class="form-files-list-item-remove"><svg><use xlink:href="' + pathTemplate + 'images/sprite.svg' + svgID + '"></use></svg></a><a href="' + data.result.urledit + '" class="form-files-list-item-edit window-link"><svg><use xlink:href="' + pathTemplate + 'images/sprite.svg#file-edit"></use></svg></a></div>');
                 } else {
-                    curFiles.find('.form-files-list').append('<div class="form-files-list-item error"><div class="form-files-list-item-name">' + data.result.text + '</div><a href="' + removeURL + '?file=' + data.result.path + '" class="form-files-list-item-remove"><svg><use xlink:href="' + pathTemplate + 'images/sprite.svg#file-remove"></use></svg></a></div>');
+                    curFiles.find('.form-files-list').append('<div class="form-files-list-item error" data-id=""><div class="form-files-list-item-move"></div><div class="form-files-list-item-name">' + data.result.text + '</div><a href="' + removeURL + '?file=' + data.result.path + '" class="form-files-list-item-remove"><svg><use xlink:href="' + pathTemplate + 'images/sprite.svg#file-remove"></use></svg></a></div>');
                 }
                 curFiles.addClass('full');
+                formFilesSort(curFiles);
             }
         });
     });
